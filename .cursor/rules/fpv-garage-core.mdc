@@ -1,0 +1,32 @@
+---
+description: Core FPV Garage project guidance for the AI assistant
+alwaysApply: true
+---
+
+# FPV Garage Project Rules
+
+- **Platform & stack**
+  - This repo is an iOS app built with Swift, SwiftUI, and Xcode.
+  - Prefer MVVM-style separation: domain models, repositories/storage, view models, and SwiftUI views.
+
+- **Architecture**
+  - Keep business logic in repositories, storage services, and view models, not directly in SwiftUI views.
+  - Use dependency injection (e.g., the DI container) instead of singletons where possible.
+  - Preserve and extend the existing repository-based storage and AppState patterns rather than reintroducing a monolithic data store.
+
+- **Quality checks**
+  - When changes could affect build behavior, run an Xcode build before considering the task "done", e.g.:
+    - `xcodebuild -project FPVGarage.xcodeproj -scheme FPVGarage -sdk iphonesimulator -quiet build`
+  - Prefer adding or updating unit/UI tests alongside non-trivial changes.
+
+- **Source control behavior**
+  - Do not add Xcode-derived artifacts (like `*.xcresult`) to version control; rely on `.gitignore`.
+  - When asked to commit/push:
+    - Inspect `git status` and diffs to understand the change set.
+    - Ensure the project builds successfully before committing.
+    - Use descriptive, purpose-focused commit messages.
+
+- **Assistant responses**
+  - Default to concise, production-quality solutions; provide deeper explanations only when the user asks.
+  - Follow clean architecture principles and keep responsibilities well-separated across layers.
+
