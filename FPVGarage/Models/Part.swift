@@ -13,15 +13,15 @@ enum PartCategory: String, Codable, CaseIterable, Hashable {
 
     var displayName: String {
         switch self {
-        case .frame: return "机架 Frame"
-        case .motor: return "电机 Motor"
-        case .esc: return "电调 ESC"
-        case .flightController: return "飞控 FC"
-        case .camera: return "摄像头 Camera"
-        case .vtx: return "图传 VTX"
-        case .receiver: return "接收机 Receiver"
-        case .propeller: return "桨叶 Propeller"
-        case .other: return "其他 Other"
+        case .frame: return String(localized: "Frame")
+        case .motor: return String(localized: "Motor")
+        case .esc: return String(localized: "ESC")
+        case .flightController: return String(localized: "Flight Controller")
+        case .camera: return String(localized: "Camera")
+        case .vtx: return String(localized: "VTX")
+        case .receiver: return String(localized: "Receiver")
+        case .propeller: return String(localized: "Propeller")
+        case .other: return String(localized: "Other")
         }
     }
 }

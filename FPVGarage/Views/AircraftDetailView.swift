@@ -1,12 +1,12 @@
 import SwiftUI
 
 struct AircraftDetailView: View {
-    @EnvironmentObject var store: DataStore
+    @EnvironmentObject var appState: AppState
     let aircraft: Aircraft
     @State private var showEdit = false
 
     private var imageURL: URL? {
-        store.aircraftImageURL(aircraftId: aircraft.id, fileName: aircraft.imageFileName)
+        appState.imageStorage.imageURL(aircraftId: aircraft.id, fileName: aircraft.imageFileName)
     }
 
     private var setup: AircraftSetup {
@@ -57,17 +57,17 @@ struct AircraftDetailView: View {
 
                 if !setup.isEmpty {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("详细配置")
+                        Text("Detailed Setup")
                             .font(.headline)
-                        detailRow(label: "机架 Frame", value: setup.frame)
-                        detailRow(label: "电机 Motor", value: setup.motor)
-                        detailRow(label: "电调 ESC", value: setup.esc)
-                        detailRow(label: "飞控 Flight Controller", value: setup.flightController)
-                        detailRow(label: "图传 VTX", value: setup.vtx)
-                        detailRow(label: "摄像头 Camera", value: setup.camera)
-                        detailRow(label: "接收机 Receiver", value: setup.receiver)
-                        detailRow(label: "桨叶 Propeller", value: setup.propeller)
-                        detailRow(label: "其他 Other", value: setup.other)
+                        detailRow(label: "Frame", value: setup.frame)
+                        detailRow(label: "Motor", value: setup.motor)
+                        detailRow(label: "ESC", value: setup.esc)
+                        detailRow(label: "Flight Controller", value: setup.flightController)
+                        detailRow(label: "VTX", value: setup.vtx)
+                        detailRow(label: "Camera", value: setup.camera)
+                        detailRow(label: "Receiver", value: setup.receiver)
+                        detailRow(label: "Propeller", value: setup.propeller)
+                        detailRow(label: "Other", value: setup.other)
                     }
                     .padding()
                     .background(.background.secondary)
@@ -75,10 +75,10 @@ struct AircraftDetailView: View {
                 }
 
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("元数据")
+                    Text("Metadata")
                         .font(.headline)
-                    detailRow(label: "创建时间", value: DateFormatter.localizedString(from: aircraft.createdAt, dateStyle: .medium, timeStyle: .short))
-                    detailRow(label: "最后更新", value: DateFormatter.localizedString(from: aircraft.updatedAt, dateStyle: .medium, timeStyle: .short))
+                    detailRow(label: "Created", value: DateFormatter.localizedString(from: aircraft.createdAt, dateStyle: .medium, timeStyle: .short))
+                    detailRow(label: "Last Updated", value: DateFormatter.localizedString(from: aircraft.updatedAt, dateStyle: .medium, timeStyle: .short))
                 }
                 .padding()
                 .background(.background.secondary)
@@ -88,22 +88,20 @@ struct AircraftDetailView: View {
             }
             .padding()
         }
-        .navigationTitle("飞机详情")
+        .navigationTitle("Aircraft Details")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                Button("编辑") {
-                    showEdit = true
-                }
+                Button("Edit") { showEdit = true }
             }
         }
         .sheet(isPresented: $showEdit) {
-            AircraftEditView(aircraft: aircraft)
+            AircraftEditView(appState: appState, aircraft: aircraft)
         }
     }
 
     @ViewBuilder
-    private func detailRow(label: String, value: String?) -> some View {
+    private func detailRow(label: LocalizedStringKey, value: String?) -> some View {
         if let value, !value.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
             HStack(alignment: .firstTextBaseline) {
                 Text(label)
@@ -117,4 +115,3 @@ struct AircraftDetailView: View {
         }
     }
 }
-

@@ -2,11 +2,12 @@ import SwiftUI
 
 @main
 struct FPVGarageApp: App {
-    @StateObject private var store = DataStore.shared
+    @StateObject private var container = DIContainer()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(store)
+                .environmentObject(container.appState)
         }
     }
 }

@@ -1,17 +1,17 @@
 import SwiftUI
 
 struct BatteryListView: View {
-    @EnvironmentObject var store: DataStore
+    @EnvironmentObject var appState: AppState
     @State private var showAdd = false
 
     var body: some View {
         NavigationStack {
             Group {
-                if store.batteries.isEmpty {
-                    ContentUnavailableView("暂无电池", systemImage: "battery.100", description: Text("点击 + 添加"))
+                if appState.batteries.isEmpty {
+                    ContentUnavailableView("No Batteries", systemImage: "battery.100", description: Text("Tap + to add"))
                 } else {
                     List {
-                        ForEach(store.batteries) { item in
+                        ForEach(appState.batteries) { item in
                             NavigationLink(value: item) {
                                 VStack(alignment: .leading, spacing: 4) {
                                     Text(item.name)
@@ -27,7 +27,7 @@ struct BatteryListView: View {
                                                 .font(.caption)
                                                 .foregroundStyle(.secondary)
                                         }
-                                        Text("循环 \(item.cycles)")
+                                        Text("Cycles \(item.cycles)")
                                             .font(.caption)
                                             .foregroundStyle(.secondary)
                                         Text(item.status.displayName)
@@ -39,26 +39,26 @@ struct BatteryListView: View {
                             }
                             .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                                 Button(role: .destructive) {
-                                    store.deleteBattery(item)
-                                } label: { Text("删除") }
+                                    appState.deleteBattery(item)
+                                } label: { Text("Delete") }
                             }
                         }
                     }
                 }
             }
-            .navigationTitle("我的电池")
+            .navigationTitle("My Batteries")
             .navigationDestination(for: Battery.self) { item in
-                BatteryEditView(battery: item)
+                BatteryEditView(appState: appState, battery: item)
             }
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button { showAdd = true } label: { Image(systemName: "plus.circle.fill") }
+                        .accessibilityIdentifier("addBatteryButton")
                 }
             }
             .sheet(isPresented: $showAdd) {
-                BatteryEditView(battery: nil)
+                BatteryEditView(appState: appState, battery: nil)
             }
         }
     }
 }
-

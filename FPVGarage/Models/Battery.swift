@@ -33,9 +33,9 @@ enum BatteryStatus: String, Codable, CaseIterable, Hashable {
 
     var displayName: String {
         switch self {
-        case .active: return "使用中"
-        case .retired: return "已退役"
-        case .damaged: return "损坏"
+        case .active: return String(localized: "Active")
+        case .retired: return String(localized: "Retired")
+        case .damaged: return String(localized: "Damaged")
         }
     }
 }

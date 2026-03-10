@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct AircraftListView: View {
-    @EnvironmentObject var store: DataStore
+    @EnvironmentObject var appState: AppState
     @State private var showAdd = false
     @State private var aircraftPendingDelete: Aircraft?
     @State private var showDeleteOptions = false
@@ -9,48 +9,49 @@ struct AircraftListView: View {
     var body: some View {
         NavigationStack {
             Group {
-                if store.aircraft.isEmpty {
-                    ContentUnavailableView("暂无飞机", systemImage: "cube.box", description: Text("点击 + 添加"))
+                if appState.aircraft.isEmpty {
+                    ContentUnavailableView("No Aircraft", systemImage: "cube.box", description: Text("Tap + to add"))
                 } else {
                     List {
-                        ForEach(store.aircraft) { item in
+                        ForEach(appState.aircraft) { item in
                             NavigationLink(value: item) {
-                                AircraftRowView(item: item, store: store)
+                                AircraftRowView(item: item, appState: appState)
                             }
                             .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                                 Button(role: .destructive) {
                                     aircraftPendingDelete = item
                                     showDeleteOptions = true
-                                } label: { Text("删除") }
+                                } label: { Text("Delete") }
                             }
                         }
                     }
                 }
             }
-            .navigationTitle("我的飞机")
+            .navigationTitle("My Aircraft")
             .navigationDestination(for: Aircraft.self) { item in
                 AircraftDetailView(aircraft: item)
             }
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button { showAdd = true } label: { Image(systemName: "plus.circle.fill") }
+                        .accessibilityIdentifier("addAircraftButton")
                 }
             }
             .sheet(isPresented: $showAdd) {
-                AircraftEditView(aircraft: nil)
+                AircraftEditView(appState: appState, aircraft: nil)
             }
-            .confirmationDialog("删除飞机", isPresented: $showDeleteOptions, titleVisibility: .visible) {
+            .confirmationDialog("Delete Aircraft", isPresented: $showDeleteOptions, titleVisibility: .visible) {
                 if let target = aircraftPendingDelete {
-                    Button("卖掉整机（删除对应部件）", role: .destructive) {
-                        store.deleteAircraft(target)
+                    Button("Sell with Parts (Delete Parts)", role: .destructive) {
+                        appState.deleteAircraftWithParts(target)
                         aircraftPendingDelete = nil
                     }
-                    Button("拆机保留部件", role: .destructive) {
-                        store.deleteAircraftKeepParts(target)
+                    Button("Tear Apart (Keep Parts)", role: .destructive) {
+                        appState.deleteAircraftKeepParts(target)
                         aircraftPendingDelete = nil
                     }
                 }
-                Button("取消", role: .cancel) {
+                Button("Cancel", role: .cancel) {
                     aircraftPendingDelete = nil
                 }
             }
@@ -60,10 +61,10 @@ struct AircraftListView: View {
 
 struct AircraftRowView: View {
     let item: Aircraft
-    let store: DataStore
+    let appState: AppState
 
     private var imageURL: URL? {
-        store.aircraftImageURL(aircraftId: item.id, fileName: item.imageFileName)
+        appState.imageStorage.imageURL(aircraftId: item.id, fileName: item.imageFileName)
     }
 
     private var setupSummary: String? {
@@ -108,4 +109,3 @@ struct AircraftRowView: View {
         }
     }
 }
-

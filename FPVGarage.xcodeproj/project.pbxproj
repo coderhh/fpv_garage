@@ -12,7 +12,6 @@
 		F00100000000000000000003 /* Aircraft.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000003 /* Aircraft.swift */; };
 		F00100000000000000000004 /* Battery.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000004 /* Battery.swift */; };
 		F00100000000000000000005 /* FlightRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000005 /* FlightRecord.swift */; };
-		F00100000000000000000006 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000006 /* DataStore.swift */; };
 		F00100000000000000000007 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000007 /* HomeView.swift */; };
 		F00100000000000000000008 /* FlightListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000008 /* FlightListView.swift */; };
 		F00100000000000000000009 /* FlightEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000009 /* FlightEditView.swift */; };
@@ -28,7 +27,49 @@
 		F00100000000000000000013 /* PartListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000014 /* PartListView.swift */; };
 		F00100000000000000000014 /* PartEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000015 /* PartEditView.swift */; };
 		F00100000000000000000015 /* PartDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000016 /* PartDetailView.swift */; };
+		F00100000000000000000016 /* AllDataDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000017 /* AllDataDocument.swift */; };
+		F00100000000000000000017 /* RepositoryProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000018 /* RepositoryProtocols.swift */; };
+		F00100000000000000000018 /* FileStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000019 /* FileStorageService.swift */; };
+		F00100000000000000000019 /* Repositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0020000000000000000001A /* Repositories.swift */; };
+		F0010000000000000000001A /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0020000000000000000001B /* AppState.swift */; };
+		F0010000000000000000001B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0020000000000000000001C /* HomeViewModel.swift */; };
+		F0010000000000000000001C /* AircraftEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0020000000000000000001D /* AircraftEditViewModel.swift */; };
+		F0010000000000000000001D /* FlightEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0020000000000000000001E /* FlightEditViewModel.swift */; };
+		F0010000000000000000001E /* BatteryEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0020000000000000000001F /* BatteryEditViewModel.swift */; };
+		F0010000000000000000001F /* PartEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000020 /* PartEditViewModel.swift */; };
+		F00100000000000000000020 /* DIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000021 /* DIContainer.swift */; };
+		F00100000000000000000030 /* MockRepositories.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000031 /* MockRepositories.swift */; };
+		F00100000000000000000031 /* ModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000032 /* ModelTests.swift */; };
+		F00100000000000000000032 /* AppStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000033 /* AppStateTests.swift */; };
+		F00100000000000000000033 /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000034 /* HomeViewModelTests.swift */; };
+		F00100000000000000000034 /* AircraftEditViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000035 /* AircraftEditViewModelTests.swift */; };
+		F00100000000000000000035 /* FlightEditViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000036 /* FlightEditViewModelTests.swift */; };
+		F00100000000000000000036 /* BatteryEditViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000037 /* BatteryEditViewModelTests.swift */; };
+		F00100000000000000000037 /* PartEditViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000038 /* PartEditViewModelTests.swift */; };
+		F00100000000000000000038 /* FileStorageServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000039 /* FileStorageServiceTests.swift */; };
+		F00100000000000000000039 /* RepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0020000000000000000003A /* RepositoryTests.swift */; };
+		F0010000000000000000003A /* AllDataDocumentTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F0020000000000000000003B /* AllDataDocumentTests.swift */; };
+		F00100000000000000000040 /* FPVGarageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000041 /* FPVGarageUITests.swift */; };
+		F00100000000000000000060 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000060 /* Localizable.xcstrings */; };
+		F00100000000000000000070 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000070 /* SettingsView.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F00A00000000000000000001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F00700000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F00500000000000000000001;
+			remoteInfo = FPVGarage;
+		};
+		F00A00000000000000000002 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F00700000000000000000001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F00500000000000000000001;
+			remoteInfo = FPVGarage;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		F00200000000000000000000 /* FPVGarage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FPVGarage.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -37,7 +78,6 @@
 		F00200000000000000000003 /* Aircraft.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aircraft.swift; sourceTree = "<group>"; };
 		F00200000000000000000004 /* Battery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Battery.swift; sourceTree = "<group>"; };
 		F00200000000000000000005 /* FlightRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightRecord.swift; sourceTree = "<group>"; };
-		F00200000000000000000006 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		F00200000000000000000007 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		F00200000000000000000008 /* FlightListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightListView.swift; sourceTree = "<group>"; };
 		F00200000000000000000009 /* FlightEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightEditView.swift; sourceTree = "<group>"; };
@@ -54,10 +94,51 @@
 		F00200000000000000000014 /* PartListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartListView.swift; sourceTree = "<group>"; };
 		F00200000000000000000015 /* PartEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartEditView.swift; sourceTree = "<group>"; };
 		F00200000000000000000016 /* PartDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartDetailView.swift; sourceTree = "<group>"; };
+		F00200000000000000000017 /* AllDataDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDataDocument.swift; sourceTree = "<group>"; };
+		F00200000000000000000018 /* RepositoryProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryProtocols.swift; sourceTree = "<group>"; };
+		F00200000000000000000019 /* FileStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorageService.swift; sourceTree = "<group>"; };
+		F0020000000000000000001A /* Repositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repositories.swift; sourceTree = "<group>"; };
+		F0020000000000000000001B /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		F0020000000000000000001C /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		F0020000000000000000001D /* AircraftEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AircraftEditViewModel.swift; sourceTree = "<group>"; };
+		F0020000000000000000001E /* FlightEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightEditViewModel.swift; sourceTree = "<group>"; };
+		F0020000000000000000001F /* BatteryEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryEditViewModel.swift; sourceTree = "<group>"; };
+		F00200000000000000000020 /* PartEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartEditViewModel.swift; sourceTree = "<group>"; };
+		F00200000000000000000021 /* DIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DIContainer.swift; sourceTree = "<group>"; };
+		F00200000000000000000030 /* FPVGarageTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FPVGarageTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F00200000000000000000031 /* MockRepositories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockRepositories.swift; sourceTree = "<group>"; };
+		F00200000000000000000032 /* ModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelTests.swift; sourceTree = "<group>"; };
+		F00200000000000000000033 /* AppStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStateTests.swift; sourceTree = "<group>"; };
+		F00200000000000000000034 /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		F00200000000000000000035 /* AircraftEditViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AircraftEditViewModelTests.swift; sourceTree = "<group>"; };
+		F00200000000000000000036 /* FlightEditViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightEditViewModelTests.swift; sourceTree = "<group>"; };
+		F00200000000000000000037 /* BatteryEditViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryEditViewModelTests.swift; sourceTree = "<group>"; };
+		F00200000000000000000038 /* PartEditViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartEditViewModelTests.swift; sourceTree = "<group>"; };
+		F00200000000000000000039 /* FileStorageServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileStorageServiceTests.swift; sourceTree = "<group>"; };
+		F0020000000000000000003A /* RepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTests.swift; sourceTree = "<group>"; };
+		F0020000000000000000003B /* AllDataDocumentTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDataDocumentTests.swift; sourceTree = "<group>"; };
+		F00200000000000000000040 /* FPVGarageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FPVGarageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F00200000000000000000041 /* FPVGarageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPVGarageUITests.swift; sourceTree = "<group>"; };
+		F00200000000000000000060 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		F00200000000000000000070 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		F00300000000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F00300000000000000000002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F00300000000000000000003 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -71,6 +152,8 @@
 			isa = PBXGroup;
 			children = (
 				F00400000000000000000002 /* FPVGarage */,
+				F00400000000000000000010 /* FPVGarageTests */,
+				F00400000000000000000020 /* FPVGarageUITests */,
 				F00400000000000000000003 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -80,9 +163,13 @@
 			children = (
 				F00200000000000000000001 /* FPVGarageApp.swift */,
 				F00200000000000000000002 /* ContentView.swift */,
+				F00200000000000000000021 /* DIContainer.swift */,
+				F00200000000000000000060 /* Localizable.xcstrings */,
 				F00200000000000000000012 /* Assets.xcassets */,
 				F0020000000000000000000F /* FPVGarage.entitlements */,
+				F00400000000000000000007 /* Domain */,
 				F00400000000000000000004 /* Models */,
+				F00400000000000000000008 /* ViewModels */,
 				F00400000000000000000005 /* Views */,
 				F00400000000000000000006 /* Storage */,
 			);
@@ -93,6 +180,8 @@
 			isa = PBXGroup;
 			children = (
 				F00200000000000000000000 /* FPVGarage.app */,
+				F00200000000000000000030 /* FPVGarageTests.xctest */,
+				F00200000000000000000040 /* FPVGarageUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,6 +213,7 @@
 				F00200000000000000000014 /* PartListView.swift */,
 				F00200000000000000000015 /* PartEditView.swift */,
 				F00200000000000000000016 /* PartDetailView.swift */,
+				F00200000000000000000070 /* SettingsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -131,9 +221,66 @@
 		F00400000000000000000006 /* Storage */ = {
 			isa = PBXGroup;
 			children = (
-				F00200000000000000000006 /* DataStore.swift */,
+				F00200000000000000000019 /* FileStorageService.swift */,
+				F0020000000000000000001A /* Repositories.swift */,
+				F0020000000000000000001B /* AppState.swift */,
+				F00200000000000000000017 /* AllDataDocument.swift */,
 			);
 			path = Storage;
+			sourceTree = "<group>";
+		};
+		F00400000000000000000007 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				F00200000000000000000018 /* RepositoryProtocols.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		F00400000000000000000008 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				F0020000000000000000001C /* HomeViewModel.swift */,
+				F0020000000000000000001D /* AircraftEditViewModel.swift */,
+				F0020000000000000000001E /* FlightEditViewModel.swift */,
+				F0020000000000000000001F /* BatteryEditViewModel.swift */,
+				F00200000000000000000020 /* PartEditViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		F00400000000000000000010 /* FPVGarageTests */ = {
+			isa = PBXGroup;
+			children = (
+				F00400000000000000000011 /* Mocks */,
+				F00200000000000000000032 /* ModelTests.swift */,
+				F00200000000000000000033 /* AppStateTests.swift */,
+				F00200000000000000000034 /* HomeViewModelTests.swift */,
+				F00200000000000000000035 /* AircraftEditViewModelTests.swift */,
+				F00200000000000000000036 /* FlightEditViewModelTests.swift */,
+				F00200000000000000000037 /* BatteryEditViewModelTests.swift */,
+				F00200000000000000000038 /* PartEditViewModelTests.swift */,
+				F00200000000000000000039 /* FileStorageServiceTests.swift */,
+				F0020000000000000000003A /* RepositoryTests.swift */,
+				F0020000000000000000003B /* AllDataDocumentTests.swift */,
+			);
+			path = FPVGarageTests;
+			sourceTree = "<group>";
+		};
+		F00400000000000000000011 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				F00200000000000000000031 /* MockRepositories.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
+		F00400000000000000000020 /* FPVGarageUITests */ = {
+			isa = PBXGroup;
+			children = (
+				F00200000000000000000041 /* FPVGarageUITests.swift */,
+			);
+			path = FPVGarageUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +303,42 @@
 			productReference = F00200000000000000000000 /* FPVGarage.app */;
 			productType = "com.apple.product-type.application";
 		};
+		F00500000000000000000010 /* FPVGarageTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F00600000000000000000003 /* Build configuration list for PBXNativeTarget "FPVGarageTests" */;
+			buildPhases = (
+				F00500000000000000000011 /* Sources */,
+				F00300000000000000000002 /* Frameworks */,
+				F00500000000000000000012 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F00900000000000000000001 /* PBXTargetDependency */,
+			);
+			name = FPVGarageTests;
+			productName = FPVGarageTests;
+			productReference = F00200000000000000000030 /* FPVGarageTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		F00500000000000000000030 /* FPVGarageUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F00600000000000000000005 /* Build configuration list for PBXNativeTarget "FPVGarageUITests" */;
+			buildPhases = (
+				F00500000000000000000031 /* Sources */,
+				F00300000000000000000003 /* Frameworks */,
+				F00500000000000000000032 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F00900000000000000000002 /* PBXTargetDependency */,
+			);
+			name = FPVGarageUITests;
+			productName = FPVGarageUITests;
+			productReference = F00200000000000000000040 /* FPVGarageUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -169,6 +352,14 @@
 					F00500000000000000000001 = {
 						CreatedOnToolsVersion = 15.0;
 					};
+					F00500000000000000000010 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = F00500000000000000000001;
+					};
+					F00500000000000000000030 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = F00500000000000000000001;
+					};
 				};
 			};
 			buildConfigurationList = F00600000000000000000001 /* Build configuration list for PBXProject "FPVGarage" */;
@@ -177,6 +368,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hans",
 				Base,
 			);
 			mainGroup = F00400000000000000000001;
@@ -185,6 +377,8 @@
 			projectRoot = "";
 			targets = (
 				F00500000000000000000001 /* FPVGarage */,
+				F00500000000000000000010 /* FPVGarageTests */,
+				F00500000000000000000030 /* FPVGarageUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -194,7 +388,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F00100000000000000000060 /* Localizable.xcstrings in Resources */,
 				F00100000000000000000011 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F00500000000000000000012 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F00500000000000000000032 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,7 +420,17 @@
 				F00100000000000000000004 /* Battery.swift in Sources */,
 				F00100000000000000000005 /* FlightRecord.swift in Sources */,
 				F00100000000000000000012 /* Part.swift in Sources */,
-				F00100000000000000000006 /* DataStore.swift in Sources */,
+				F00100000000000000000016 /* AllDataDocument.swift in Sources */,
+				F00100000000000000000017 /* RepositoryProtocols.swift in Sources */,
+				F00100000000000000000018 /* FileStorageService.swift in Sources */,
+				F00100000000000000000019 /* Repositories.swift in Sources */,
+				F0010000000000000000001A /* AppState.swift in Sources */,
+				F0010000000000000000001B /* HomeViewModel.swift in Sources */,
+				F0010000000000000000001C /* AircraftEditViewModel.swift in Sources */,
+				F0010000000000000000001D /* FlightEditViewModel.swift in Sources */,
+				F0010000000000000000001E /* BatteryEditViewModel.swift in Sources */,
+				F0010000000000000000001F /* PartEditViewModel.swift in Sources */,
+				F00100000000000000000020 /* DIContainer.swift in Sources */,
 				F00100000000000000000007 /* HomeView.swift in Sources */,
 				F00100000000000000000008 /* FlightListView.swift in Sources */,
 				F00100000000000000000009 /* FlightEditView.swift in Sources */,
@@ -225,10 +444,50 @@
 				F00100000000000000000013 /* PartListView.swift in Sources */,
 				F00100000000000000000014 /* PartEditView.swift in Sources */,
 				F00100000000000000000015 /* PartDetailView.swift in Sources */,
+				F00100000000000000000070 /* SettingsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F00500000000000000000011 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F00100000000000000000030 /* MockRepositories.swift in Sources */,
+				F00100000000000000000031 /* ModelTests.swift in Sources */,
+				F00100000000000000000032 /* AppStateTests.swift in Sources */,
+				F00100000000000000000033 /* HomeViewModelTests.swift in Sources */,
+				F00100000000000000000034 /* AircraftEditViewModelTests.swift in Sources */,
+				F00100000000000000000035 /* FlightEditViewModelTests.swift in Sources */,
+				F00100000000000000000036 /* BatteryEditViewModelTests.swift in Sources */,
+				F00100000000000000000037 /* PartEditViewModelTests.swift in Sources */,
+				F00100000000000000000038 /* FileStorageServiceTests.swift in Sources */,
+				F00100000000000000000039 /* RepositoryTests.swift in Sources */,
+				F0010000000000000000003A /* AllDataDocumentTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F00500000000000000000031 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F00100000000000000000040 /* FPVGarageUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F00900000000000000000001 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F00500000000000000000001 /* FPVGarage */;
+			targetProxy = F00A00000000000000000001 /* PBXContainerItemProxy */;
+		};
+		F00900000000000000000002 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F00500000000000000000001 /* FPVGarage */;
+			targetProxy = F00A00000000000000000002 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		F00800000000000000000001 /* Debug */ = {
@@ -342,12 +601,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = FPVGarage/FPVGarage.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = U7XS79B47L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "用于为飞机添加照片";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "用于记录飞行地点位置";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -359,8 +622,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.fpvgarage.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yehanghan.fpvgarage.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -372,12 +636,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_ENTITLEMENTS = FPVGarage/FPVGarage.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = U7XS79B47L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "用于为飞机添加照片";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "用于记录飞行地点位置";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -389,11 +656,81 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.fpvgarage.app;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yehanghan.fpvgarage.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F00800000000000000000010 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yehanghan.fpvgarage.app.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FPVGarage.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FPVGarage";
+			};
+			name = Debug;
+		};
+		F00800000000000000000011 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yehanghan.fpvgarage.app.tests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FPVGarage.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FPVGarage";
+			};
+			name = Release;
+		};
+		F00800000000000000000020 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yehanghan.fpvgarage.app.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FPVGarage;
+			};
+			name = Debug;
+		};
+		F00800000000000000000021 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.yehanghan.fpvgarage.app.uitests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = FPVGarage;
 			};
 			name = Release;
 		};
@@ -414,6 +751,24 @@
 			buildConfigurations = (
 				F00800000000000000000003 /* Debug */,
 				F00800000000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F00600000000000000000003 /* Build configuration list for PBXNativeTarget "FPVGarageTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F00800000000000000000010 /* Debug */,
+				F00800000000000000000011 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F00600000000000000000005 /* Build configuration list for PBXNativeTarget "FPVGarageUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F00800000000000000000020 /* Debug */,
+				F00800000000000000000021 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

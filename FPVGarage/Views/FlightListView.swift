@@ -1,44 +1,45 @@
 import SwiftUI
 
 struct FlightListView: View {
-    @EnvironmentObject var store: DataStore
+    @EnvironmentObject var appState: AppState
     @State private var showAdd = false
 
     var sortedFlights: [FlightRecord] {
-        store.flightRecords.sorted { $0.startAt > $1.startAt }
+        appState.flightRecords.sorted { $0.startAt > $1.startAt }
     }
 
     var body: some View {
         NavigationStack {
             Group {
                 if sortedFlights.isEmpty {
-                    ContentUnavailableView("暂无飞行记录", systemImage: "airplane", description: Text("点击 + 添加"))
+                    ContentUnavailableView("No Flight Records", systemImage: "airplane", description: Text("Tap + to add"))
                 } else {
                     List {
                         ForEach(sortedFlights) { flight in
                             NavigationLink(value: flight) {
-                                FlightRowView(flight: flight, store: store)
+                                FlightRowView(flight: flight, appState: appState)
                             }
                             .swipeActions(edge: .trailing, allowsFullSwipe: true) {
                                 Button(role: .destructive) {
-                                    store.deleteFlight(flight)
-                                } label: { Text("删除") }
+                                    appState.deleteFlight(flight)
+                                } label: { Text("Delete") }
                             }
                         }
                     }
                 }
             }
-            .navigationTitle("飞行记录")
+            .navigationTitle("Flight Records")
             .navigationDestination(for: FlightRecord.self) { flight in
                 FlightDetailView(flight: flight)
             }
             .toolbar {
                 ToolbarItem(placement: .primaryAction) {
                     Button { showAdd = true } label: { Image(systemName: "plus.circle.fill") }
+                        .accessibilityIdentifier("addFlightButton")
                 }
             }
             .sheet(isPresented: $showAdd) {
-                FlightEditView(flight: nil)
+                FlightEditView(appState: appState, flight: nil)
             }
         }
     }
@@ -46,10 +47,10 @@ struct FlightListView: View {
 
 struct FlightRowView: View {
     let flight: FlightRecord
-    let store: DataStore
+    let appState: AppState
 
     var aircraftName: String {
-        store.aircraft(by: flight.aircraftId)?.name ?? "—"
+        appState.findAircraft(by: flight.aircraftId)?.name ?? "—"
     }
 
     var body: some View {
@@ -58,7 +59,7 @@ struct FlightRowView: View {
                 Text(aircraftName)
                     .font(.headline)
                 Spacer()
-                Text("\(flight.durationSeconds) 秒")
+                Text("\(flight.durationSeconds) sec")
                     .foregroundStyle(.secondary)
             }
             Text(flight.startAt, style: .date)
@@ -74,4 +75,3 @@ struct FlightRowView: View {
         .padding(.vertical, 4)
     }
 }
-

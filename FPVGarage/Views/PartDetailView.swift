@@ -1,32 +1,32 @@
 import SwiftUI
 
 struct PartDetailView: View {
-    @EnvironmentObject var store: DataStore
+    @EnvironmentObject var appState: AppState
     let part: Part
     @State private var showEdit = false
 
     private var sourceAircraft: Aircraft? {
         guard let id = part.sourceAircraftId else { return nil }
-        return store.aircraft(by: id)
+        return appState.findAircraft(by: id)
     }
 
     var body: some View {
         List {
-            Section("基本信息") {
+            Section("Basic Info") {
                 HStack {
-                    Text("名称")
+                    Text("Name")
                     Spacer()
                     Text(part.name)
                         .foregroundStyle(.primary)
                 }
                 HStack {
-                    Text("类型")
+                    Text("Type")
                     Spacer()
                     Text(part.category.displayName)
                         .foregroundStyle(.secondary)
                 }
                 HStack {
-                    Text("数量")
+                    Text("Quantity")
                     Spacer()
                     Text("x\(part.quantity)")
                         .foregroundStyle(.primary)
@@ -34,7 +34,7 @@ struct PartDetailView: View {
             }
 
             if let aircraft = sourceAircraft {
-                Section("来源飞机") {
+                Section("Source Aircraft") {
                     NavigationLink(value: aircraft) {
                         HStack {
                             Text(aircraft.name)
@@ -50,39 +50,36 @@ struct PartDetailView: View {
             }
 
             if let remark = part.remark, !remark.isEmpty {
-                Section("备注") {
+                Section("Remark") {
                     Text(remark)
                         .font(.body)
                 }
             }
 
-            Section("元数据") {
+            Section("Metadata") {
                 HStack {
-                    Text("创建时间")
+                    Text("Created")
                     Spacer()
                     Text(DateFormatter.localizedString(from: part.createdAt, dateStyle: .medium, timeStyle: .short))
                         .foregroundStyle(.secondary)
                 }
                 HStack {
-                    Text("最后更新")
+                    Text("Last Updated")
                     Spacer()
                     Text(DateFormatter.localizedString(from: part.updatedAt, dateStyle: .medium, timeStyle: .short))
                         .foregroundStyle(.secondary)
                 }
             }
         }
-        .navigationTitle("部件详情")
+        .navigationTitle("Part Details")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                Button("编辑") {
-                    showEdit = true
-                }
+                Button("Edit") { showEdit = true }
             }
         }
         .sheet(isPresented: $showEdit) {
-            PartEditView(part: part)
+            PartEditView(appState: appState, part: part)
         }
     }
 }
-

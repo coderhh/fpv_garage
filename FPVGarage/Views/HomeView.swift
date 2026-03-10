@@ -1,52 +1,100 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject var store: DataStore
+    @StateObject private var viewModel: HomeViewModel
+    @State private var showSettings = false
+    @State private var showClearConfirmation = false
 
-    var totalDuration: Int {
-        store.flightRecords.reduce(0) { $0 + $1.durationSeconds }
+    init(appState: AppState) {
+        _viewModel = StateObject(wrappedValue: HomeViewModel(appState: appState))
     }
 
     var body: some View {
         NavigationStack {
             List {
-                Section("概览") {
+                Section("Overview") {
                     HStack {
-                        Label("飞行次数", systemImage: "airplane")
+                        Label("Flight Count", systemImage: "airplane")
                         Spacer()
-                        Text("\(store.flightRecords.count)")
+                        Text("\(viewModel.flightCount)")
                             .foregroundStyle(.secondary)
                     }
                     HStack {
-                        Label("总时长(秒)", systemImage: "clock")
+                        Label("Total Duration (sec)", systemImage: "clock")
                         Spacer()
-                        Text("\(totalDuration)")
+                        Text("\(viewModel.totalDuration)")
                             .foregroundStyle(.green)
                     }
                     HStack {
-                        Label("飞机", systemImage: "cube.box")
+                        Label("Aircraft", systemImage: "cube.box")
                         Spacer()
-                        Text("\(store.aircraft.count)")
+                        Text("\(viewModel.aircraftCount)")
                             .foregroundStyle(.secondary)
                     }
                     HStack {
-                        Label("电池", systemImage: "battery.100")
+                        Label("Batteries", systemImage: "battery.100")
                         Spacer()
-                        Text("\(store.batteries.count)")
+                        Text("\(viewModel.batteryCount)")
+                            .foregroundStyle(.secondary)
+                    }
+                    HStack {
+                        Label("Parts", systemImage: "wrench.and.screwdriver")
+                        Spacer()
+                        Text("\(viewModel.partCount)")
                             .foregroundStyle(.secondary)
                     }
                 }
 
-                Section("开发与测试") {
+                Section("Data") {
                     Button {
-                        store.seedTestData()
+                        viewModel.prepareExport()
                     } label: {
-                        Label("生成测试数据", systemImage: "doc.badge.plus")
+                        Label("Export All Data (JSON)", systemImage: "square.and.arrow.up")
                     }
                 }
+                #if DEBUG
+                Section("Development & Testing") {
+                    Button {
+                        viewModel.seedTestData()
+                    } label: {
+                        Label("Generate Test Data", systemImage: "doc.badge.plus")
+                    }
+                    Button(role: .destructive) {
+                        showClearConfirmation = true
+                    } label: {
+                        Label("Clear All Data", systemImage: "trash")
+                    }
+                }
+                #endif
             }
             .navigationTitle("FPV Garage")
+            .toolbar {
+                ToolbarItem(placement: .primaryAction) {
+                    Button {
+                        showSettings = true
+                    } label: {
+                        Image(systemName: "gearshape")
+                    }
+                    .accessibilityIdentifier("settingsButton")
+                }
+            }
+            .sheet(isPresented: $showSettings) {
+                SettingsView()
+            }
+            .confirmationDialog("Clear All Data", isPresented: $showClearConfirmation, titleVisibility: .visible) {
+                Button("Delete All", role: .destructive) {
+                    viewModel.clearAllData()
+                }
+                Button("Cancel", role: .cancel) {}
+            } message: {
+                Text("This will permanently delete all aircraft, batteries, flights, and parts. This action cannot be undone.")
+            }
         }
+        .fileExporter(
+            isPresented: $viewModel.isExporting,
+            document: viewModel.exportDocument,
+            contentType: .json,
+            defaultFilename: "fpv-garage-backup"
+        ) { _ in }
     }
 }
-

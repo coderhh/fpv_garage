@@ -1,20 +1,21 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var appState: AppState
+
     var body: some View {
         TabView {
-            HomeView()
-                .tabItem { Label("首页", systemImage: "house.fill") }
+            HomeView(appState: appState)
+                .tabItem { Label("Home", systemImage: "house.fill") }
             FlightListView()
-                .tabItem { Label("飞行", systemImage: "airplane") }
+                .tabItem { Label("Flights", systemImage: "airplane") }
             AircraftListView()
-                .tabItem { Label("飞机", systemImage: "cube.box.fill") }
+                .tabItem { Label("Aircraft", systemImage: "cube.box.fill") }
             BatteryListView()
-                .tabItem { Label("电池", systemImage: "battery.100") }
+                .tabItem { Label("Batteries", systemImage: "battery.100") }
             PartListView()
-                .tabItem { Label("部件", systemImage: "wrench.and.screwdriver") }
+                .tabItem { Label("Parts", systemImage: "wrench.and.screwdriver") }
         }
         .tint(.green)
     }
 }
-

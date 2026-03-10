@@ -1,42 +1,42 @@
 import SwiftUI
 
 struct FlightDetailView: View {
-    @EnvironmentObject var store: DataStore
+    @EnvironmentObject var appState: AppState
     let flight: FlightRecord
     @State private var showEdit = false
 
     private var aircraft: Aircraft? {
-        store.aircraft(by: flight.aircraftId)
+        appState.findAircraft(by: flight.aircraftId)
     }
 
     private var batteries: [Battery] {
-        store.batteries(by: flight.batteryIds)
+        appState.findBatteries(by: flight.batteryIds)
     }
 
     private var durationText: String {
-        "\(flight.durationSeconds) 秒"
+        String(localized: "\(flight.durationSeconds) sec")
     }
 
     var body: some View {
         List {
-            Section("飞机") {
+            Section("Aircraft") {
                 HStack {
-                    Text("名称")
+                    Text("Name")
                     Spacer()
                     Text(aircraft?.name ?? "—")
                         .foregroundStyle(.primary)
                 }
             }
 
-            Section("时间与时长") {
+            Section("Time & Duration") {
                 HStack {
-                    Text("起飞时间")
+                    Text("Takeoff Time")
                     Spacer()
                     Text(DateFormatter.localizedString(from: flight.startAt, dateStyle: .medium, timeStyle: .short))
                         .foregroundStyle(.primary)
                 }
                 HStack {
-                    Text("飞行时长")
+                    Text("Flight Duration")
                     Spacer()
                     Text(durationText)
                         .foregroundStyle(.primary)
@@ -44,12 +44,12 @@ struct FlightDetailView: View {
             }
 
             if !batteries.isEmpty {
-                Section("使用电池") {
+                Section("Batteries Used") {
                     ForEach(batteries) { battery in
                         HStack {
                             Text(battery.name)
                             Spacer()
-                            Text("循环 \(battery.cycles)")
+                            Text("Cycles \(battery.cycles)")
                                 .font(.caption)
                                 .foregroundStyle(.secondary)
                         }
@@ -58,21 +58,21 @@ struct FlightDetailView: View {
             }
 
             if let address = flight.address, !address.isEmpty {
-                Section("地点") {
+                Section("Location") {
                     Text(address)
                         .font(.body)
                 }
             }
 
             if flight.latitude != nil || flight.longitude != nil {
-                Section("坐标") {
+                Section("Coordinates") {
                     HStack {
-                        Text("纬度")
+                        Text("Latitude")
                         Spacer()
                         Text(flight.latitude.map { String(format: "%.6f", $0) } ?? "—")
                     }
                     HStack {
-                        Text("经度")
+                        Text("Longitude")
                         Spacer()
                         Text(flight.longitude.map { String(format: "%.6f", $0) } ?? "—")
                     }
@@ -80,24 +80,21 @@ struct FlightDetailView: View {
             }
 
             if let remark = flight.remark, !remark.isEmpty {
-                Section("备注") {
+                Section("Remark") {
                     Text(remark)
                         .font(.body)
                 }
             }
         }
-        .navigationTitle("飞行详情")
+        .navigationTitle("Flight Details")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
-                Button("编辑") {
-                    showEdit = true
-                }
+                Button("Edit") { showEdit = true }
             }
         }
         .sheet(isPresented: $showEdit) {
-            FlightEditView(flight: flight)
+            FlightEditView(appState: appState, flight: flight)
         }
     }
 }
-
