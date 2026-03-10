@@ -140,3 +140,25 @@
     - Adding/adjusting view models and views.
   - Avoid putting business logic directly inside SwiftUI views.
 
+### 11. Planned: LLM-Powered Config Advice & Recommendations
+
+- **Overview**
+  - A future feature will use an LLM (large language model) to provide FPV drone configuration advice, thrust-to-weight analysis (推重比), and part purchase suggestions, using the app’s existing aircraft, battery, parts, and flight data.
+- **Scope (in scope for this feature)**
+  - **Config advice**: Natural-language suggestions based on current aircraft setup, battery choice, and usage (e.g. freestyle vs racing).
+  - **Thrust-to-weight ratio (推重比)**: Compute ratio from motor thrust specs (or user-entered values), prop, and AUW (all-up weight); optionally have LLM interpret “good/bad” for intended use.
+  - **Part purchase suggestions**: Recommendations such as “low on ESCs”, “motor X often pairs with prop Y”, or “consider upgrading VTX” based on inventory and linked aircraft.
+- **Out of scope (for initial version)**
+  - Real-time telemetry integration; automated sync with retailers; in-app purchasing.
+- **Solution approach**
+  - **Inputs**: Read-only use of existing domain data (Aircraft with setup, Parts, Batteries, optional FlightRecord summary). No new core entities required for v1; optional extension later for motor thrust / AUW if not derivable from current model.
+  - **Thrust-to-weight**: Implement deterministic calculation (thrust ÷ weight) where thrust comes from motor/prop data or user input, weight from aircraft + battery. Expose result to the user and to the LLM context for interpretation.
+  - **LLM integration**: Call a cloud LLM API (e.g. OpenAI-compatible) with a structured prompt that includes a privacy-conscious summary of fleet, parts, and optionally computed metrics. API key stored in app (e.g. Settings), user must opt in. On-device LLM remains a possible future option for simpler flows.
+  - **UX**: New entry point (e.g. “Config advice” or “AI 建议” from Home or Aircraft detail). Single screen or flow: user triggers “Get advice”; app shows loading then LLM-generated text plus any computed metrics (e.g. 推重比). Settings: enable/disable feature, API key (secure entry), and clear disclosure that data is sent to the chosen provider.
+- **Architecture (high level)**
+  - New **ConfigAdvice** (or similar) feature: view model + view; optional **AdviceService** / **LLMClient** protocol for API calls; repository layer remains read-only (no new repositories required). Keep prompts and API details behind a service so provider can be swapped or mocked for tests.
+- **Non-functional**
+  - **Privacy**: User must be informed that using the advice feature sends a summary of their data to the selected LLM provider; no telemetry or analytics required for this feature.
+  - **Offline**: Advice feature requires network when LLM is used; thrust-to-weight calculation can work offline if inputs are available.
+  - **Cost**: API usage is the user’s responsibility (key in their control).
+

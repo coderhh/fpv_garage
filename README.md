@@ -119,6 +119,10 @@ If all of the above work, the app is functioning correctly.
 
 The app requests **Camera** permission (to take aircraft photos) and **Location When In Use** permission (to set flight locations on the map).
 
+## Roadmap & planned features
+
+- **LLM-powered config advice** — Use an LLM to generate FPV config advice, **thrust-to-weight (推重比)** calculation and interpretation, and **part purchase suggestions** based on your aircraft, batteries, and parts. See [ROADMAP.md](ROADMAP.md) for the plan and solution outline; detailed product/technical scope is in [SPEC.md](SPEC.md) §11.
+
 ## License
 
 MIT
