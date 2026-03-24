@@ -13,6 +13,14 @@ struct AircraftDetailView: View {
         aircraft.setupOrEmpty
     }
 
+    private var twrResult: ThrustToWeightResult? {
+        ThrustToWeightCalculator.calculate(from: aircraft)
+    }
+
+    private var compatWarnings: [CompatibilityWarning] {
+        CompatibilityChecker.check(aircraft: aircraft, battery: nil)
+    }
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
@@ -72,6 +80,14 @@ struct AircraftDetailView: View {
                     .padding()
                     .background(.background.secondary)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
+                }
+
+                if let twr = twrResult {
+                    TWRGaugeView(result: twr)
+                }
+
+                if !compatWarnings.isEmpty {
+                    CompatibilityWarningsView(warnings: compatWarnings)
                 }
 
                 VStack(alignment: .leading, spacing: 8) {

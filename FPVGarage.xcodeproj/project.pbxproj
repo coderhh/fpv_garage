@@ -52,6 +52,13 @@
 		F00100000000000000000040 /* FPVGarageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000041 /* FPVGarageUITests.swift */; };
 		F00100000000000000000060 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000060 /* Localizable.xcstrings */; };
 		F00100000000000000000070 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000070 /* SettingsView.swift */; };
+		A00100000000000000000001 /* AdviceTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00200000000000000000001 /* AdviceTypes.swift */; };
+		A00100000000000000000002 /* ThrustToWeightCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00200000000000000000002 /* ThrustToWeightCalculator.swift */; };
+		A00100000000000000000003 /* CompatibilityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00200000000000000000003 /* CompatibilityChecker.swift */; };
+		A00100000000000000000004 /* TWRGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00200000000000000000004 /* TWRGaugeView.swift */; };
+		A00100000000000000000005 /* CompatibilityWarningsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00200000000000000000005 /* CompatibilityWarningsView.swift */; };
+		A00100000000000000000006 /* ThrustToWeightCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00200000000000000000006 /* ThrustToWeightCalculatorTests.swift */; };
+		A00100000000000000000007 /* CompatibilityCheckerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00200000000000000000007 /* CompatibilityCheckerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +128,13 @@
 		F00200000000000000000041 /* FPVGarageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPVGarageUITests.swift; sourceTree = "<group>"; };
 		F00200000000000000000060 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		F00200000000000000000070 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		A00200000000000000000001 /* AdviceTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceTypes.swift; sourceTree = "<group>"; };
+		A00200000000000000000002 /* ThrustToWeightCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrustToWeightCalculator.swift; sourceTree = "<group>"; };
+		A00200000000000000000003 /* CompatibilityChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityChecker.swift; sourceTree = "<group>"; };
+		A00200000000000000000004 /* TWRGaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TWRGaugeView.swift; sourceTree = "<group>"; };
+		A00200000000000000000005 /* CompatibilityWarningsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityWarningsView.swift; sourceTree = "<group>"; };
+		A00200000000000000000006 /* ThrustToWeightCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrustToWeightCalculatorTests.swift; sourceTree = "<group>"; };
+		A00200000000000000000007 /* CompatibilityCheckerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityCheckerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				F00200000000000000000003 /* Aircraft.swift */,
+				A00200000000000000000001 /* AdviceTypes.swift */,
 				F00200000000000000000004 /* Battery.swift */,
 				F00200000000000000000005 /* FlightRecord.swift */,
 				F00200000000000000000013 /* Part.swift */,
@@ -214,6 +229,8 @@
 				F00200000000000000000015 /* PartEditView.swift */,
 				F00200000000000000000016 /* PartDetailView.swift */,
 				F00200000000000000000070 /* SettingsView.swift */,
+				A00200000000000000000004 /* TWRGaugeView.swift */,
+				A00200000000000000000005 /* CompatibilityWarningsView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -233,6 +250,8 @@
 			isa = PBXGroup;
 			children = (
 				F00200000000000000000018 /* RepositoryProtocols.swift */,
+				A00200000000000000000002 /* ThrustToWeightCalculator.swift */,
+				A00200000000000000000003 /* CompatibilityChecker.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -263,6 +282,8 @@
 				F00200000000000000000039 /* FileStorageServiceTests.swift */,
 				F0020000000000000000003A /* RepositoryTests.swift */,
 				F0020000000000000000003B /* AllDataDocumentTests.swift */,
+				A00200000000000000000006 /* ThrustToWeightCalculatorTests.swift */,
+				A00200000000000000000007 /* CompatibilityCheckerTests.swift */,
 			);
 			path = FPVGarageTests;
 			sourceTree = "<group>";
@@ -445,6 +466,11 @@
 				F00100000000000000000014 /* PartEditView.swift in Sources */,
 				F00100000000000000000015 /* PartDetailView.swift in Sources */,
 				F00100000000000000000070 /* SettingsView.swift in Sources */,
+				A00100000000000000000001 /* AdviceTypes.swift in Sources */,
+				A00100000000000000000002 /* ThrustToWeightCalculator.swift in Sources */,
+				A00100000000000000000003 /* CompatibilityChecker.swift in Sources */,
+				A00100000000000000000004 /* TWRGaugeView.swift in Sources */,
+				A00100000000000000000005 /* CompatibilityWarningsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +489,8 @@
 				F00100000000000000000038 /* FileStorageServiceTests.swift in Sources */,
 				F00100000000000000000039 /* RepositoryTests.swift in Sources */,
 				F0010000000000000000003A /* AllDataDocumentTests.swift in Sources */,
+				A00100000000000000000006 /* ThrustToWeightCalculatorTests.swift in Sources */,
+				A00100000000000000000007 /* CompatibilityCheckerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

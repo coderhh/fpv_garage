@@ -7,62 +7,6 @@
     "%lld mAh" : {
 
     },
-    "Settings" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : { "state" : "translated", "value" : "设置" }
-        }
-      }
-    },
-    "Language" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : { "state" : "translated", "value" : "语言" }
-        }
-      }
-    },
-    "About" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : { "state" : "translated", "value" : "关于" }
-        }
-      }
-    },
-    "Version" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : { "state" : "translated", "value" : "版本" }
-        }
-      }
-    },
-    "Build" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : { "state" : "translated", "value" : "构建号" }
-        }
-      }
-    },
-    "Restart Required" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : { "state" : "translated", "value" : "需要重启" }
-        }
-      }
-    },
-    "Please restart the app for the language change to take effect." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : { "state" : "translated", "value" : "请重启应用以使语言更改生效。" }
-        }
-      }
-    },
-    "OK" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : { "state" : "translated", "value" : "好" }
-        }
-      }
-    },
     "%lld sec" : {
       "localizations" : {
         "zh-Hans" : {
@@ -75,6 +19,16 @@
     },
     "%lldS" : {
 
+    },
+    "About" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关于"
+          }
+        }
+      }
     },
     "Active" : {
       "localizations" : {
@@ -216,24 +170,13 @@
         }
       }
     },
-    "Clear All Data" : {
+    "Build" : {
       "localizations" : {
         "zh-Hans" : {
-          "stringUnit" : { "state" : "translated", "value" : "清除所有数据" }
-        }
-      }
-    },
-    "Delete All" : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : { "state" : "translated", "value" : "全部删除" }
-        }
-      }
-    },
-    "This will permanently delete all aircraft, batteries, flights, and parts. This action cannot be undone." : {
-      "localizations" : {
-        "zh-Hans" : {
-          "stringUnit" : { "state" : "translated", "value" : "这将永久删除所有飞机、电池、飞行记录和部件，此操作不可撤销。" }
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "构建号"
+          }
         }
       }
     },
@@ -283,6 +226,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "从相册选择"
+          }
+        }
+      }
+    },
+    "Clear All Data" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "清除所有数据"
           }
         }
       }
@@ -377,6 +330,16 @@
         }
       }
     },
+    "Delete All" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "全部删除"
+          }
+        }
+      }
+    },
     "Detailed Setup" : {
       "localizations" : {
         "zh-Hans" : {
@@ -388,6 +351,7 @@
       }
     },
     "Development & Testing" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -572,6 +536,7 @@
       }
     },
     "Generate Test Data" : {
+      "extractionState" : "stale",
       "localizations" : {
         "zh-Hans" : {
           "stringUnit" : {
@@ -587,6 +552,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "首页"
+          }
+        }
+      }
+    },
+    "Language" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "语言"
           }
         }
       }
@@ -751,6 +726,16 @@
         }
       }
     },
+    "OK" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "好"
+          }
+        }
+      }
+    },
     "Optional" : {
       "localizations" : {
         "zh-Hans" : {
@@ -811,6 +796,16 @@
         }
       }
     },
+    "Please restart the app for the language change to take effect." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "请重启应用以使语言更改生效。"
+          }
+        }
+      }
+    },
     "Please Select" : {
       "localizations" : {
         "zh-Hans" : {
@@ -857,6 +852,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "备注"
+          }
+        }
+      }
+    },
+    "Restart Required" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "需要重启"
           }
         }
       }
@@ -917,6 +922,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "编号(选填)"
+          }
+        }
+      }
+    },
+    "Settings" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "设置"
           }
         }
       }
@@ -1001,6 +1016,16 @@
         }
       }
     },
+    "This will permanently delete all aircraft, batteries, flights, and parts. This action cannot be undone." : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "这将永久删除所有飞机、电池、飞行记录和部件，此操作不可撤销。"
+          }
+        }
+      }
+    },
     "Time & Duration" : {
       "localizations" : {
         "zh-Hans" : {
@@ -1037,6 +1062,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "使用当前定位"
+          }
+        }
+      }
+    },
+    "Version" : {
+      "localizations" : {
+        "zh-Hans" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "版本"
           }
         }
       }
