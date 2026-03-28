@@ -28,6 +28,23 @@ final class PartRepository: PartRepositoryProtocol {
     func save(_ items: [Part]) { storage.save(items, to: "parts.json") }
 }
 
+final class AdviceSessionRepository: AdviceSessionRepositoryProtocol {
+    private let storage: FileStorageService
+    init(storage: FileStorageService) { self.storage = storage }
+
+    func loadSessions(for aircraftId: UUID) -> [AdviceSession] {
+        storage.load([AdviceSession].self, from: "advice_sessions/\(aircraftId.uuidString).json") ?? []
+    }
+
+    func saveSessions(_ sessions: [AdviceSession], for aircraftId: UUID) {
+        storage.save(sessions, to: "advice_sessions/\(aircraftId.uuidString).json")
+    }
+
+    func latestSession(for aircraftId: UUID) -> AdviceSession? {
+        loadSessions(for: aircraftId).sorted { $0.generatedAt > $1.generatedAt }.first
+    }
+}
+
 final class ImageRepository: ImageStorageProtocol {
     private let storage: FileStorageService
     private let fileManager = FileManager.default

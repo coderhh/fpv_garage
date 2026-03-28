@@ -59,6 +59,28 @@
 		A00100000000000000000005 /* CompatibilityWarningsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00200000000000000000005 /* CompatibilityWarningsView.swift */; };
 		A00100000000000000000006 /* ThrustToWeightCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00200000000000000000006 /* ThrustToWeightCalculatorTests.swift */; };
 		A00100000000000000000007 /* CompatibilityCheckerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A00200000000000000000007 /* CompatibilityCheckerTests.swift */; };
+		B00100000000000000000001 /* LLMClientProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00200000000000000000001 /* LLMClientProtocol.swift */; };
+		B00100000000000000000002 /* LLMError.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00200000000000000000002 /* LLMError.swift */; };
+		B00100000000000000000003 /* OpenAIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00200000000000000000003 /* OpenAIClient.swift */; };
+		B00100000000000000000004 /* APIKeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00200000000000000000004 /* APIKeyStore.swift */; };
+		B00100000000000000000005 /* AdviceSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00200000000000000000005 /* AdviceSession.swift */; };
+		B00100000000000000000006 /* ConfigHashCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00200000000000000000006 /* ConfigHashCalculator.swift */; };
+		B00100000000000000000007 /* FleetContextBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00200000000000000000007 /* FleetContextBuilder.swift */; };
+		B00100000000000000000008 /* PromptBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00200000000000000000008 /* PromptBuilder.swift */; };
+		B00100000000000000000009 /* AdviceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B00200000000000000000009 /* AdviceViewModel.swift */; };
+		B0010000000000000000000A /* AdviceEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0020000000000000000000A /* AdviceEntryView.swift */; };
+		B0010000000000000000000B /* AdviceResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0020000000000000000000B /* AdviceResultView.swift */; };
+		B0010000000000000000000C /* AdviceSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0020000000000000000000C /* AdviceSettingsView.swift */; };
+		D00100000000000000000001 /* AdviceHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00200000000000000000001 /* AdviceHistoryView.swift */; };
+		D00100000000000000000002 /* AdviceSessionStalenessTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D00200000000000000000002 /* AdviceSessionStalenessTests.swift */; };
+		E00100000000000000000001 /* MiniMaxClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E00200000000000000000001 /* MiniMaxClient.swift */; };
+		C00100000000000000000001 /* MockLLMClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00200000000000000000001 /* MockLLMClient.swift */; };
+		C00100000000000000000002 /* MockAPIKeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00200000000000000000002 /* MockAPIKeyStore.swift */; };
+		C00100000000000000000003 /* ConfigHashCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00200000000000000000003 /* ConfigHashCalculatorTests.swift */; };
+		C00100000000000000000004 /* FleetContextBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00200000000000000000004 /* FleetContextBuilderTests.swift */; };
+		C00100000000000000000005 /* PromptBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00200000000000000000005 /* PromptBuilderTests.swift */; };
+		C00100000000000000000006 /* AdviceViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00200000000000000000006 /* AdviceViewModelTests.swift */; };
+		C00100000000000000000007 /* AdviceSessionRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00200000000000000000007 /* AdviceSessionRepositoryTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,6 +157,28 @@
 		A00200000000000000000005 /* CompatibilityWarningsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityWarningsView.swift; sourceTree = "<group>"; };
 		A00200000000000000000006 /* ThrustToWeightCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrustToWeightCalculatorTests.swift; sourceTree = "<group>"; };
 		A00200000000000000000007 /* CompatibilityCheckerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityCheckerTests.swift; sourceTree = "<group>"; };
+		B00200000000000000000001 /* LLMClientProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLMClientProtocol.swift; sourceTree = "<group>"; };
+		B00200000000000000000002 /* LLMError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LLMError.swift; sourceTree = "<group>"; };
+		B00200000000000000000003 /* OpenAIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIClient.swift; sourceTree = "<group>"; };
+		B00200000000000000000004 /* APIKeyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeyStore.swift; sourceTree = "<group>"; };
+		B00200000000000000000005 /* AdviceSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceSession.swift; sourceTree = "<group>"; };
+		B00200000000000000000006 /* ConfigHashCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigHashCalculator.swift; sourceTree = "<group>"; };
+		B00200000000000000000007 /* FleetContextBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetContextBuilder.swift; sourceTree = "<group>"; };
+		B00200000000000000000008 /* PromptBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptBuilder.swift; sourceTree = "<group>"; };
+		B00200000000000000000009 /* AdviceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceViewModel.swift; sourceTree = "<group>"; };
+		B0020000000000000000000A /* AdviceEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceEntryView.swift; sourceTree = "<group>"; };
+		B0020000000000000000000B /* AdviceResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceResultView.swift; sourceTree = "<group>"; };
+		B0020000000000000000000C /* AdviceSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceSettingsView.swift; sourceTree = "<group>"; };
+		D00200000000000000000001 /* AdviceHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceHistoryView.swift; sourceTree = "<group>"; };
+		D00200000000000000000002 /* AdviceSessionStalenessTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceSessionStalenessTests.swift; sourceTree = "<group>"; };
+		E00200000000000000000001 /* MiniMaxClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniMaxClient.swift; sourceTree = "<group>"; };
+		C00200000000000000000001 /* MockLLMClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockLLMClient.swift; sourceTree = "<group>"; };
+		C00200000000000000000002 /* MockAPIKeyStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockAPIKeyStore.swift; sourceTree = "<group>"; };
+		C00200000000000000000003 /* ConfigHashCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigHashCalculatorTests.swift; sourceTree = "<group>"; };
+		C00200000000000000000004 /* FleetContextBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FleetContextBuilderTests.swift; sourceTree = "<group>"; };
+		C00200000000000000000005 /* PromptBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptBuilderTests.swift; sourceTree = "<group>"; };
+		C00200000000000000000006 /* AdviceViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceViewModelTests.swift; sourceTree = "<group>"; };
+		C00200000000000000000007 /* AdviceSessionRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceSessionRepositoryTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +230,8 @@
 				F00400000000000000000008 /* ViewModels */,
 				F00400000000000000000005 /* Views */,
 				F00400000000000000000006 /* Storage */,
+				B00400000000000000000001 /* Services */,
+				B00400000000000000000002 /* Security */,
 			);
 			path = FPVGarage;
 			sourceTree = "<group>";
@@ -205,6 +251,7 @@
 			children = (
 				F00200000000000000000003 /* Aircraft.swift */,
 				A00200000000000000000001 /* AdviceTypes.swift */,
+				B00200000000000000000005 /* AdviceSession.swift */,
 				F00200000000000000000004 /* Battery.swift */,
 				F00200000000000000000005 /* FlightRecord.swift */,
 				F00200000000000000000013 /* Part.swift */,
@@ -231,6 +278,7 @@
 				F00200000000000000000070 /* SettingsView.swift */,
 				A00200000000000000000004 /* TWRGaugeView.swift */,
 				A00200000000000000000005 /* CompatibilityWarningsView.swift */,
+				B00400000000000000000003 /* Advice */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -252,6 +300,10 @@
 				F00200000000000000000018 /* RepositoryProtocols.swift */,
 				A00200000000000000000002 /* ThrustToWeightCalculator.swift */,
 				A00200000000000000000003 /* CompatibilityChecker.swift */,
+				B00200000000000000000001 /* LLMClientProtocol.swift */,
+				B00200000000000000000006 /* ConfigHashCalculator.swift */,
+				B00200000000000000000007 /* FleetContextBuilder.swift */,
+				B00200000000000000000008 /* PromptBuilder.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -264,8 +316,38 @@
 				F0020000000000000000001E /* FlightEditViewModel.swift */,
 				F0020000000000000000001F /* BatteryEditViewModel.swift */,
 				F00200000000000000000020 /* PartEditViewModel.swift */,
+				B00200000000000000000009 /* AdviceViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		B00400000000000000000001 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B00200000000000000000002 /* LLMError.swift */,
+				B00200000000000000000003 /* OpenAIClient.swift */,
+				E00200000000000000000001 /* MiniMaxClient.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B00400000000000000000002 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				B00200000000000000000004 /* APIKeyStore.swift */,
+			);
+			path = Security;
+			sourceTree = "<group>";
+		};
+		B00400000000000000000003 /* Advice */ = {
+			isa = PBXGroup;
+			children = (
+				B0020000000000000000000A /* AdviceEntryView.swift */,
+				B0020000000000000000000B /* AdviceResultView.swift */,
+				B0020000000000000000000C /* AdviceSettingsView.swift */,
+				D00200000000000000000001 /* AdviceHistoryView.swift */,
+			);
+			path = Advice;
 			sourceTree = "<group>";
 		};
 		F00400000000000000000010 /* FPVGarageTests */ = {
@@ -284,6 +366,12 @@
 				F0020000000000000000003B /* AllDataDocumentTests.swift */,
 				A00200000000000000000006 /* ThrustToWeightCalculatorTests.swift */,
 				A00200000000000000000007 /* CompatibilityCheckerTests.swift */,
+				C00200000000000000000003 /* ConfigHashCalculatorTests.swift */,
+				C00200000000000000000004 /* FleetContextBuilderTests.swift */,
+				C00200000000000000000005 /* PromptBuilderTests.swift */,
+				C00200000000000000000006 /* AdviceViewModelTests.swift */,
+				C00200000000000000000007 /* AdviceSessionRepositoryTests.swift */,
+				D00200000000000000000002 /* AdviceSessionStalenessTests.swift */,
 			);
 			path = FPVGarageTests;
 			sourceTree = "<group>";
@@ -292,6 +380,8 @@
 			isa = PBXGroup;
 			children = (
 				F00200000000000000000031 /* MockRepositories.swift */,
+				C00200000000000000000001 /* MockLLMClient.swift */,
+				C00200000000000000000002 /* MockAPIKeyStore.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -471,6 +561,20 @@
 				A00100000000000000000003 /* CompatibilityChecker.swift in Sources */,
 				A00100000000000000000004 /* TWRGaugeView.swift in Sources */,
 				A00100000000000000000005 /* CompatibilityWarningsView.swift in Sources */,
+				B00100000000000000000001 /* LLMClientProtocol.swift in Sources */,
+				B00100000000000000000002 /* LLMError.swift in Sources */,
+				B00100000000000000000003 /* OpenAIClient.swift in Sources */,
+				B00100000000000000000004 /* APIKeyStore.swift in Sources */,
+				B00100000000000000000005 /* AdviceSession.swift in Sources */,
+				B00100000000000000000006 /* ConfigHashCalculator.swift in Sources */,
+				B00100000000000000000007 /* FleetContextBuilder.swift in Sources */,
+				B00100000000000000000008 /* PromptBuilder.swift in Sources */,
+				B00100000000000000000009 /* AdviceViewModel.swift in Sources */,
+				B0010000000000000000000A /* AdviceEntryView.swift in Sources */,
+				B0010000000000000000000B /* AdviceResultView.swift in Sources */,
+				B0010000000000000000000C /* AdviceSettingsView.swift in Sources */,
+				D00100000000000000000001 /* AdviceHistoryView.swift in Sources */,
+				E00100000000000000000001 /* MiniMaxClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -491,6 +595,14 @@
 				F0010000000000000000003A /* AllDataDocumentTests.swift in Sources */,
 				A00100000000000000000006 /* ThrustToWeightCalculatorTests.swift in Sources */,
 				A00100000000000000000007 /* CompatibilityCheckerTests.swift in Sources */,
+				C00100000000000000000001 /* MockLLMClient.swift in Sources */,
+				C00100000000000000000002 /* MockAPIKeyStore.swift in Sources */,
+				C00100000000000000000003 /* ConfigHashCalculatorTests.swift in Sources */,
+				C00100000000000000000004 /* FleetContextBuilderTests.swift in Sources */,
+				C00100000000000000000005 /* PromptBuilderTests.swift in Sources */,
+				C00100000000000000000006 /* AdviceViewModelTests.swift in Sources */,
+				C00100000000000000000007 /* AdviceSessionRepositoryTests.swift in Sources */,
+				D00100000000000000000002 /* AdviceSessionStalenessTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

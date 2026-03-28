@@ -43,8 +43,8 @@ final class FileStorageService {
     }
 
     func save<T: Encodable>(_ value: T, to file: String) {
-        ensureDirectory(storageBaseURL)
         let url = storageBaseURL.appendingPathComponent(file)
+        ensureDirectory(url.deletingLastPathComponent())
         guard let data = try? JSONEncoder().encode(value) else { return }
         let coordinator = NSFileCoordinator()
         var coordinatorError: NSError?
@@ -83,15 +83,17 @@ final class FileStorageService {
                 try? fileManager.copyItem(at: localFile, to: iCloudFile)
             }
         }
-        let localImages = local.appendingPathComponent("aircraft_images", isDirectory: true)
-        let iCloudImages = iCloud.appendingPathComponent("aircraft_images", isDirectory: true)
-        if fileManager.fileExists(atPath: localImages.path) {
-            ensureDirectory(iCloudImages)
-            if let contents = try? fileManager.contentsOfDirectory(at: localImages, includingPropertiesForKeys: nil) {
-                for src in contents {
-                    let dest = iCloudImages.appendingPathComponent(src.lastPathComponent)
-                    if !fileManager.fileExists(atPath: dest.path) {
-                        try? fileManager.copyItem(at: src, to: dest)
+        for subdir in ["aircraft_images", "advice_sessions"] {
+            let localDir = local.appendingPathComponent(subdir, isDirectory: true)
+            let iCloudDir = iCloud.appendingPathComponent(subdir, isDirectory: true)
+            if fileManager.fileExists(atPath: localDir.path) {
+                ensureDirectory(iCloudDir)
+                if let contents = try? fileManager.contentsOfDirectory(at: localDir, includingPropertiesForKeys: nil) {
+                    for src in contents {
+                        let dest = iCloudDir.appendingPathComponent(src.lastPathComponent)
+                        if !fileManager.fileExists(atPath: dest.path) {
+                            try? fileManager.copyItem(at: src, to: dest)
+                        }
                     }
                 }
             }

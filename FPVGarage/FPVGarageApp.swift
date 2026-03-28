@@ -8,6 +8,7 @@ struct FPVGarageApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(container.appState)
+                .environmentObject(container)
         }
     }
 }

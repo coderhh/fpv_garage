@@ -25,6 +25,24 @@ final class MockPartRepository: PartRepositoryProtocol {
     func save(_ items: [Part]) { self.items = items }
 }
 
+final class MockAdviceSessionRepository: AdviceSessionRepositoryProtocol {
+    private var store: [UUID: [AdviceSession]] = [:]
+    var saveCallCount = 0
+
+    func loadSessions(for aircraftId: UUID) -> [AdviceSession] {
+        store[aircraftId] ?? []
+    }
+
+    func saveSessions(_ sessions: [AdviceSession], for aircraftId: UUID) {
+        saveCallCount += 1
+        store[aircraftId] = sessions
+    }
+
+    func latestSession(for aircraftId: UUID) -> AdviceSession? {
+        loadSessions(for: aircraftId).sorted { $0.generatedAt > $1.generatedAt }.first
+    }
+}
+
 final class MockImageStorage: ImageStorageProtocol {
     var savedImages: [UUID: Data] = [:]
     var deletedFiles: [String] = []
