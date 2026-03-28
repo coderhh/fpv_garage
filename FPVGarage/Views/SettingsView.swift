@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @EnvironmentObject var container: DIContainer
     @State private var showRestartAlert = false
     @State private var selectedLanguage: AppLanguage
 
@@ -11,6 +12,12 @@ struct SettingsView: View {
     var body: some View {
         NavigationStack {
             List {
+                Section("AI Config Advice") {
+                    NavigationLink("Advice Settings") {
+                        AdviceSettingsView(container: container)
+                    }
+                }
+
                 Section("Language") {
                     ForEach(AppLanguage.allCases) { lang in
                         Button {

@@ -2,6 +2,7 @@ import SwiftUI
 
 struct AircraftDetailView: View {
     @EnvironmentObject var appState: AppState
+    @EnvironmentObject var container: DIContainer
     let aircraft: Aircraft
     @State private var showEdit = false
 
@@ -11,6 +12,14 @@ struct AircraftDetailView: View {
 
     private var setup: AircraftSetup {
         aircraft.setupOrEmpty
+    }
+
+    private var twrResult: ThrustToWeightResult? {
+        ThrustToWeightCalculator.calculate(from: aircraft)
+    }
+
+    private var compatWarnings: [CompatibilityWarning] {
+        CompatibilityChecker.check(aircraft: aircraft, battery: nil)
     }
 
     var body: some View {
@@ -73,6 +82,30 @@ struct AircraftDetailView: View {
                     .background(.background.secondary)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                 }
+
+                if let twr = twrResult {
+                    TWRGaugeView(result: twr)
+                }
+
+                if !compatWarnings.isEmpty {
+                    CompatibilityWarningsView(warnings: compatWarnings)
+                }
+
+                NavigationLink {
+                    AdviceEntryView(appState: appState, aircraft: aircraft, container: container)
+                } label: {
+                    HStack {
+                        Label("AI Config Advice", systemImage: "sparkles")
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .font(.caption)
+                            .foregroundStyle(.tertiary)
+                    }
+                    .padding()
+                    .background(.background.secondary)
+                    .clipShape(RoundedRectangle(cornerRadius: 12))
+                }
+                .buttonStyle(.plain)
 
                 VStack(alignment: .leading, spacing: 8) {
                     Text("Metadata")

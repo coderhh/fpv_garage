@@ -166,4 +166,88 @@ final class AircraftEditViewModelTests: XCTestCase {
         XCTAssertNil(appState.aircraft.first?.model)
         XCTAssertNil(appState.aircraft.first?.remark)
     }
+
+    // MARK: - Performance Data
+
+    func testNewAircraftPerformanceDefaults() {
+        let vm = AircraftEditViewModel(appState: appState, aircraft: nil)
+        XCTAssertNil(vm.flightStyle)
+        XCTAssertNil(vm.pilotSkillLevel)
+        XCTAssertEqual(vm.frameSizeInch, "")
+        XCTAssertEqual(vm.motorModel, "")
+        XCTAssertEqual(vm.motorKv, "")
+        XCTAssertEqual(vm.motorThrustGrams, "")
+        XCTAssertNil(vm.motorThrustDataSource)
+        XCTAssertEqual(vm.propSizeField, "")
+        XCTAssertEqual(vm.allUpWeightGrams, "")
+        XCTAssertEqual(vm.batteryCellCount, "")
+    }
+
+    func testEditAircraftLoadsPerformanceData() {
+        let a = Aircraft(
+            name: "Drone",
+            flightStyle: .freestyle,
+            pilotSkillLevel: .advanced,
+            frameSizeInch: 5.0,
+            motorModel: "T-Motor",
+            motorKv: 1950,
+            motorThrustGrams: 500,
+            motorThrustDataSource: .specSheet,
+            propSize: "51466",
+            allUpWeightGrams: 650,
+            batteryCellCount: 6
+        )
+        let vm = AircraftEditViewModel(appState: appState, aircraft: a)
+        XCTAssertEqual(vm.flightStyle, .freestyle)
+        XCTAssertEqual(vm.pilotSkillLevel, .advanced)
+        XCTAssertEqual(vm.frameSizeInch, "5.0")
+        XCTAssertEqual(vm.motorModel, "T-Motor")
+        XCTAssertEqual(vm.motorKv, "1950")
+        XCTAssertEqual(vm.motorThrustGrams, "500")
+        XCTAssertEqual(vm.motorThrustDataSource, .specSheet)
+        XCTAssertEqual(vm.propSizeField, "51466")
+        XCTAssertEqual(vm.allUpWeightGrams, "650")
+        XCTAssertEqual(vm.batteryCellCount, "6")
+    }
+
+    func testSavePerformanceData() {
+        let vm = AircraftEditViewModel(appState: appState, aircraft: nil)
+        vm.name = "Drone"
+        vm.flightStyle = .racing
+        vm.motorKv = "2400"
+        vm.motorThrustGrams = "600"
+        vm.motorThrustDataSource = .measured
+        vm.allUpWeightGrams = "500"
+        vm.batteryCellCount = "6"
+        vm.save()
+
+        let saved = appState.aircraft.first
+        XCTAssertEqual(saved?.flightStyle, .racing)
+        XCTAssertEqual(saved?.motorKv, 2400)
+        XCTAssertEqual(saved?.motorThrustGrams, 600)
+        XCTAssertEqual(saved?.motorThrustDataSource, .measured)
+        XCTAssertEqual(saved?.allUpWeightGrams, 500)
+        XCTAssertEqual(saved?.batteryCellCount, 6)
+    }
+
+    func testSaveEmptyNumericFieldsAreNil() {
+        let vm = AircraftEditViewModel(appState: appState, aircraft: nil)
+        vm.name = "Drone"
+        vm.motorKv = ""
+        vm.allUpWeightGrams = "  "
+        vm.save()
+
+        let saved = appState.aircraft.first
+        XCTAssertNil(saved?.motorKv)
+        XCTAssertNil(saved?.allUpWeightGrams)
+    }
+
+    func testSaveInvalidNumericFieldsAreNil() {
+        let vm = AircraftEditViewModel(appState: appState, aircraft: nil)
+        vm.name = "Drone"
+        vm.motorKv = "abc"
+        vm.save()
+
+        XCTAssertNil(appState.aircraft.first?.motorKv)
+    }
 }

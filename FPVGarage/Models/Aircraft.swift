@@ -31,6 +31,21 @@ struct Aircraft: Identifiable, Codable, Equatable, Hashable {
     var createdAt: Date
     var updatedAt: Date
 
+    // MARK: - Performance Data (for TWR + compatibility)
+    var flightStyle: FlightStyle?
+    var pilotSkillLevel: PilotSkillLevel?
+    var frameSizeInch: Double?
+    var motorModel: String?
+    var motorKv: Int?
+    /// Per-motor thrust in grams at rated voltage
+    var motorThrustGrams: Int?
+    var motorThrustDataSource: ThrustDataSource?
+    var propSize: String?
+    /// All-up weight in grams including battery
+    var allUpWeightGrams: Int?
+    /// Overrides linked battery cell count if set
+    var batteryCellCount: Int?
+
     init(
         id: UUID = UUID(),
         name: String,
@@ -39,7 +54,17 @@ struct Aircraft: Identifiable, Codable, Equatable, Hashable {
         setup: AircraftSetup? = nil,
         remark: String? = nil,
         createdAt: Date = Date(),
-        updatedAt: Date = Date()
+        updatedAt: Date = Date(),
+        flightStyle: FlightStyle? = nil,
+        pilotSkillLevel: PilotSkillLevel? = nil,
+        frameSizeInch: Double? = nil,
+        motorModel: String? = nil,
+        motorKv: Int? = nil,
+        motorThrustGrams: Int? = nil,
+        motorThrustDataSource: ThrustDataSource? = nil,
+        propSize: String? = nil,
+        allUpWeightGrams: Int? = nil,
+        batteryCellCount: Int? = nil
     ) {
         self.id = id
         self.name = name
@@ -49,6 +74,16 @@ struct Aircraft: Identifiable, Codable, Equatable, Hashable {
         self.remark = remark
         self.createdAt = createdAt
         self.updatedAt = updatedAt
+        self.flightStyle = flightStyle
+        self.pilotSkillLevel = pilotSkillLevel
+        self.frameSizeInch = frameSizeInch
+        self.motorModel = motorModel
+        self.motorKv = motorKv
+        self.motorThrustGrams = motorThrustGrams
+        self.motorThrustDataSource = motorThrustDataSource
+        self.propSize = propSize
+        self.allUpWeightGrams = allUpWeightGrams
+        self.batteryCellCount = batteryCellCount
     }
 
     var setupOrEmpty: AircraftSetup { setup ?? .empty }

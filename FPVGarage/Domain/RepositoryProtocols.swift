@@ -25,3 +25,9 @@ protocol ImageStorageProtocol {
     func imageURL(aircraftId: UUID, fileName: String?) -> URL?
     func deleteImage(fileName: String?)
 }
+
+protocol AdviceSessionRepositoryProtocol {
+    func loadSessions(for aircraftId: UUID) -> [AdviceSession]
+    func saveSessions(_ sessions: [AdviceSession], for aircraftId: UUID)
+    func latestSession(for aircraftId: UUID) -> AdviceSession?
+}

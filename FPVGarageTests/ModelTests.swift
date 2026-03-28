@@ -40,6 +40,16 @@ final class ModelTests: XCTestCase {
         XCTAssertNil(a.imageFileName)
         XCTAssertNil(a.setup)
         XCTAssertNil(a.remark)
+        XCTAssertNil(a.flightStyle)
+        XCTAssertNil(a.pilotSkillLevel)
+        XCTAssertNil(a.frameSizeInch)
+        XCTAssertNil(a.motorModel)
+        XCTAssertNil(a.motorKv)
+        XCTAssertNil(a.motorThrustGrams)
+        XCTAssertNil(a.motorThrustDataSource)
+        XCTAssertNil(a.propSize)
+        XCTAssertNil(a.allUpWeightGrams)
+        XCTAssertNil(a.batteryCellCount)
     }
 
     func testAircraftCodable() throws {
@@ -56,6 +66,93 @@ final class ModelTests: XCTestCase {
         let a = Aircraft(id: id, name: "A", createdAt: date, updatedAt: date)
         let b = Aircraft(id: id, name: "A", createdAt: date, updatedAt: date)
         XCTAssertEqual(a, b)
+    }
+
+    func testAircraftCodableWithPerformanceData() throws {
+        let original = Aircraft(
+            name: "Test", model: "Custom",
+            setup: AircraftSetup(frame: "F"),
+            flightStyle: .freestyle,
+            pilotSkillLevel: .advanced,
+            frameSizeInch: 5.0,
+            motorModel: "T-Motor",
+            motorKv: 1950,
+            motorThrustGrams: 500,
+            motorThrustDataSource: .specSheet,
+            propSize: "51466",
+            allUpWeightGrams: 650,
+            batteryCellCount: 6
+        )
+        let data = try JSONEncoder().encode(original)
+        let decoded = try JSONDecoder().decode(Aircraft.self, from: data)
+        XCTAssertEqual(original, decoded)
+    }
+
+    func testAircraftBackwardCompatibility() throws {
+        // JSON from before performance data fields existed
+        let json = """
+        {"id":"00000000-0000-0000-0000-000000000001","name":"Old","createdAt":0,"updatedAt":0}
+        """
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .secondsSince1970
+        let a = try decoder.decode(Aircraft.self, from: Data(json.utf8))
+        XCTAssertEqual(a.name, "Old")
+        XCTAssertNil(a.flightStyle)
+        XCTAssertNil(a.motorKv)
+        XCTAssertNil(a.allUpWeightGrams)
+    }
+
+    // MARK: - FlightStyle
+
+    func testFlightStyleCodable() throws {
+        for style in FlightStyle.allCases {
+            let data = try JSONEncoder().encode(style)
+            let decoded = try JSONDecoder().decode(FlightStyle.self, from: data)
+            XCTAssertEqual(style, decoded)
+        }
+    }
+
+    func testFlightStyleAllCases() {
+        XCTAssertEqual(FlightStyle.allCases.count, 5)
+    }
+
+    // MARK: - PilotSkillLevel
+
+    func testPilotSkillLevelCodable() throws {
+        for level in PilotSkillLevel.allCases {
+            let data = try JSONEncoder().encode(level)
+            let decoded = try JSONDecoder().decode(PilotSkillLevel.self, from: data)
+            XCTAssertEqual(level, decoded)
+        }
+    }
+
+    // MARK: - ThrustDataSource
+
+    func testThrustDataSourceCodable() throws {
+        for src in ThrustDataSource.allCases {
+            let data = try JSONEncoder().encode(src)
+            let decoded = try JSONDecoder().decode(ThrustDataSource.self, from: data)
+            XCTAssertEqual(src, decoded)
+        }
+    }
+
+    // MARK: - ThrustToWeightResult
+
+    func testThrustToWeightResultCodable() throws {
+        let original = ThrustToWeightResult(ratio: 5.5, tier: .good, flightStyle: .freestyle,
+                                            confidence: .measured, calculatedAt: Date())
+        let data = try JSONEncoder().encode(original)
+        let decoded = try JSONDecoder().decode(ThrustToWeightResult.self, from: data)
+        XCTAssertEqual(original, decoded)
+    }
+
+    // MARK: - CompatibilityWarning
+
+    func testCompatibilityWarningCodable() throws {
+        let original = CompatibilityWarning(rule: "test_rule", level: .warning, detail: "Detail")
+        let data = try JSONEncoder().encode(original)
+        let decoded = try JSONDecoder().decode(CompatibilityWarning.self, from: data)
+        XCTAssertEqual(original, decoded)
     }
 
     // MARK: - BatteryStatus

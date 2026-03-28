@@ -84,6 +84,39 @@ struct AircraftEditView: View {
                     TextField("Other", text: $viewModel.otherSetup, axis: .vertical)
                         .lineLimit(2...3)
                 }
+
+                Section("Performance Data") {
+                    Picker("Flight Style", selection: $viewModel.flightStyle) {
+                        Text("Not Set").tag(FlightStyle?.none)
+                        ForEach(FlightStyle.allCases, id: \.self) { style in
+                            Text(style.displayName).tag(FlightStyle?.some(style))
+                        }
+                    }
+                    Picker("Pilot Skill", selection: $viewModel.pilotSkillLevel) {
+                        Text("Not Set").tag(PilotSkillLevel?.none)
+                        ForEach(PilotSkillLevel.allCases, id: \.self) { level in
+                            Text(level.displayName).tag(PilotSkillLevel?.some(level))
+                        }
+                    }
+                    TextField("Frame Size (inches)", text: $viewModel.frameSizeInch)
+                        .keyboardType(.decimalPad)
+                    TextField("Motor Model", text: $viewModel.motorModel)
+                    TextField("Motor KV", text: $viewModel.motorKv)
+                        .keyboardType(.numberPad)
+                    TextField("Motor Thrust (g/motor)", text: $viewModel.motorThrustGrams)
+                        .keyboardType(.numberPad)
+                    Picker("Thrust Data Source", selection: $viewModel.motorThrustDataSource) {
+                        Text("Not Set").tag(ThrustDataSource?.none)
+                        ForEach(ThrustDataSource.allCases, id: \.self) { src in
+                            Text(src.displayName).tag(ThrustDataSource?.some(src))
+                        }
+                    }
+                    TextField("Prop Size", text: $viewModel.propSizeField)
+                    TextField("All-Up Weight (g)", text: $viewModel.allUpWeightGrams)
+                        .keyboardType(.numberPad)
+                    TextField("Battery Cells", text: $viewModel.batteryCellCount)
+                        .keyboardType(.numberPad)
+                }
             }
             .navigationTitle(viewModel.isNew ? "Add Aircraft" : "Edit Aircraft")
             .navigationBarTitleDisplayMode(.inline)
