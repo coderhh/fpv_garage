@@ -13,6 +13,18 @@ struct AircraftDetailView: View {
         aircraft.setupOrEmpty
     }
 
+    private var linkedBattery: Battery? {
+        appState.batteries.first
+    }
+
+    private var twrResult: ThrustToWeightResult? {
+        ThrustToWeightCalculator.calculate(aircraft: aircraft, linkedBattery: linkedBattery)
+    }
+
+    private var compatibilityWarnings: [CompatibilityWarning] {
+        CompatibilityChecker.check(aircraft: aircraft, linkedBattery: linkedBattery)
+    }
+
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 16) {
@@ -55,6 +67,16 @@ struct AircraftDetailView: View {
                     Spacer()
                 }
 
+                // TWR gauge (shown only when enough data is present)
+                if let twr = twrResult {
+                    TWRGaugeView(result: twr)
+                }
+
+                // Compatibility warnings (shown when any performance data is entered)
+                if hasPerformanceData {
+                    CompatibilityWarningsView(warnings: compatibilityWarnings)
+                }
+
                 if !setup.isEmpty {
                     VStack(alignment: .leading, spacing: 8) {
                         Text("Detailed Setup")
@@ -72,6 +94,10 @@ struct AircraftDetailView: View {
                     .padding()
                     .background(.background.secondary)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
+                }
+
+                if hasPerformanceData {
+                    performanceSection
                 }
 
                 VStack(alignment: .leading, spacing: 8) {
@@ -98,6 +124,38 @@ struct AircraftDetailView: View {
         .sheet(isPresented: $showEdit) {
             AircraftEditView(appState: appState, aircraft: aircraft)
         }
+    }
+
+    private var hasPerformanceData: Bool {
+        aircraft.flightStyle != nil
+        || aircraft.motorKv != nil
+        || aircraft.motorThrustGrams != nil
+        || aircraft.allUpWeightGrams != nil
+        || aircraft.escCurrentRating != nil
+        || aircraft.motorMaxCurrentAmps != nil
+    }
+
+    @ViewBuilder
+    private var performanceSection: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("Performance Data")
+                .font(.headline)
+            detailRow(label: "Flight Style", value: aircraft.flightStyle?.displayName)
+            detailRow(label: "Pilot Level", value: aircraft.pilotSkillLevel?.displayName)
+            detailRow(label: "Frame Size", value: aircraft.frameSizeInch.map { String(format: "%.0f\"", $0) })
+            detailRow(label: "Motor Model", value: aircraft.motorModel)
+            detailRow(label: "Motor KV", value: aircraft.motorKv.map { "\($0) KV" })
+            detailRow(label: "Motor Thrust", value: aircraft.motorThrustGrams.map { "\($0) g/motor" })
+            detailRow(label: "Thrust Source", value: aircraft.motorThrustDataSource?.displayName)
+            detailRow(label: "Prop Size", value: aircraft.propSize)
+            detailRow(label: "Cell Count", value: aircraft.batteryCellCount.map { "\($0)S" })
+            detailRow(label: "All-Up Weight", value: aircraft.allUpWeightGrams.map { "\($0) g" })
+            detailRow(label: "ESC Rating", value: aircraft.escCurrentRating.map { "\($0) A" })
+            detailRow(label: "Motor Max Current", value: aircraft.motorMaxCurrentAmps.map { "\($0) A" })
+        }
+        .padding()
+        .background(.background.secondary)
+        .clipShape(RoundedRectangle(cornerRadius: 12))
     }
 
     @ViewBuilder
