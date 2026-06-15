@@ -58,8 +58,10 @@
 		F001000000000000000000A3 /* CompatibilityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F002000000000000000000A3 /* CompatibilityChecker.swift */; };
 		F001000000000000000000A4 /* TWRGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F002000000000000000000A4 /* TWRGaugeView.swift */; };
 		F001000000000000000000A5 /* CompatibilityWarningsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F002000000000000000000A5 /* CompatibilityWarningsView.swift */; };
+		F001000000000000000000A6 /* AircraftBatteryResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F002000000000000000000A6 /* AircraftBatteryResolver.swift */; };
 		F001000000000000000000B0 /* ThrustToWeightCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F002000000000000000000B0 /* ThrustToWeightCalculatorTests.swift */; };
 		F001000000000000000000B1 /* CompatibilityCheckerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F002000000000000000000B1 /* CompatibilityCheckerTests.swift */; };
+		F001000000000000000000B2 /* AircraftBatteryResolverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F002000000000000000000B2 /* AircraftBatteryResolverTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -135,8 +137,10 @@
 		F002000000000000000000A3 /* CompatibilityChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityChecker.swift; sourceTree = "<group>"; };
 		F002000000000000000000A4 /* TWRGaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TWRGaugeView.swift; sourceTree = "<group>"; };
 		F002000000000000000000A5 /* CompatibilityWarningsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityWarningsView.swift; sourceTree = "<group>"; };
+		F002000000000000000000A6 /* AircraftBatteryResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AircraftBatteryResolver.swift; sourceTree = "<group>"; };
 		F002000000000000000000B0 /* ThrustToWeightCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrustToWeightCalculatorTests.swift; sourceTree = "<group>"; };
 		F002000000000000000000B1 /* CompatibilityCheckerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityCheckerTests.swift; sourceTree = "<group>"; };
+		F002000000000000000000B2 /* AircraftBatteryResolverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AircraftBatteryResolverTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -263,6 +267,7 @@
 				F002000000000000000000A1 /* AdviceTypes.swift */,
 				F002000000000000000000A2 /* ThrustToWeightCalculator.swift */,
 				F002000000000000000000A3 /* CompatibilityChecker.swift */,
+				F002000000000000000000A6 /* AircraftBatteryResolver.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -295,6 +300,7 @@
 				F0020000000000000000003B /* AllDataDocumentTests.swift */,
 				F002000000000000000000B0 /* ThrustToWeightCalculatorTests.swift */,
 				F002000000000000000000B1 /* CompatibilityCheckerTests.swift */,
+				F002000000000000000000B2 /* AircraftBatteryResolverTests.swift */,
 			);
 			path = FPVGarageTests;
 			sourceTree = "<group>";
@@ -483,6 +489,7 @@
 				F001000000000000000000A3 /* CompatibilityChecker.swift in Sources */,
 				F001000000000000000000A4 /* TWRGaugeView.swift in Sources */,
 				F001000000000000000000A5 /* CompatibilityWarningsView.swift in Sources */,
+				F001000000000000000000A6 /* AircraftBatteryResolver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -503,6 +510,7 @@
 				F0010000000000000000003A /* AllDataDocumentTests.swift in Sources */,
 				F001000000000000000000B0 /* ThrustToWeightCalculatorTests.swift in Sources */,
 				F001000000000000000000B1 /* CompatibilityCheckerTests.swift in Sources */,
+				F001000000000000000000B2 /* AircraftBatteryResolverTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,13 +17,11 @@ struct AircraftDetailView: View {
     /// aircraft→battery link in the data model, so the latest flight record is the
     /// only real association. Returns nil when the aircraft has no logged battery.
     private var linkedBattery: Battery? {
-        let batteryId = appState.flightRecords
-            .filter { $0.aircraftId == aircraft.id && !$0.batteryIds.isEmpty }
-            .sorted { $0.startAt > $1.startAt }
-            .first?
-            .batteryIds.first
-        guard let batteryId else { return nil }
-        return appState.batteries.first { $0.id == batteryId }
+        AircraftBatteryResolver.mostRecentBattery(
+            for: aircraft,
+            flightRecords: appState.flightRecords,
+            batteries: appState.batteries
+        )
     }
 
     private var twrResult: ThrustToWeightResult? {
