@@ -13,8 +13,17 @@ struct AircraftDetailView: View {
         aircraft.setupOrEmpty
     }
 
+    /// The battery used on this aircraft's most recent flight. There is no direct
+    /// aircraft→battery link in the data model, so the latest flight record is the
+    /// only real association. Returns nil when the aircraft has no logged battery.
     private var linkedBattery: Battery? {
-        appState.batteries.first
+        let batteryId = appState.flightRecords
+            .filter { $0.aircraftId == aircraft.id && !$0.batteryIds.isEmpty }
+            .sorted { $0.startAt > $1.startAt }
+            .first?
+            .batteryIds.first
+        guard let batteryId else { return nil }
+        return appState.batteries.first { $0.id == batteryId }
     }
 
     private var twrResult: ThrustToWeightResult? {
@@ -72,8 +81,9 @@ struct AircraftDetailView: View {
                     TWRGaugeView(result: twr)
                 }
 
-                // Compatibility warnings (shown when any performance data is entered)
-                if hasPerformanceData {
+                // Compatibility warnings (only when there are inputs to actually check,
+                // otherwise "No issues detected" would be misleading)
+                if hasCompatibilityData {
                     CompatibilityWarningsView(warnings: compatibilityWarnings)
                 }
 
@@ -133,6 +143,14 @@ struct AircraftDetailView: View {
         || aircraft.allUpWeightGrams != nil
         || aircraft.escCurrentRating != nil
         || aircraft.motorMaxCurrentAmps != nil
+    }
+
+    /// True when at least one compatibility rule has the inputs it needs to run.
+    private var hasCompatibilityData: Bool {
+        let escRule = aircraft.escCurrentRating != nil && aircraft.motorMaxCurrentAmps != nil
+        let kvRule = aircraft.motorKv != nil && (aircraft.batteryCellCount != nil || linkedBattery?.cells != nil)
+        let cRule = aircraft.motorMaxCurrentAmps != nil && linkedBattery?.cRating != nil
+        return escRule || kvRule || cRule
     }
 
     @ViewBuilder
