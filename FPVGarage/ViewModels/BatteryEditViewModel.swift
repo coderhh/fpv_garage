@@ -9,6 +9,7 @@ final class BatteryEditViewModel: ObservableObject {
     @Published var capacityMah = ""
     @Published var cells = ""
     @Published var cycles = "0"
+    @Published var cRating = ""
     @Published var status: BatteryStatus = .active
     @Published var remark = ""
 
@@ -28,6 +29,7 @@ final class BatteryEditViewModel: ObservableObject {
         let cap = Int(capacityMah.trimmingCharacters(in: .whitespaces))
         let cellCount = Int(cells.trimmingCharacters(in: .whitespaces))
         let cycleCount = Int(cycles.trimmingCharacters(in: .whitespaces)) ?? 0
+        let cRatingValue = Int(cRating.trimmingCharacters(in: .whitespaces))
 
         if var b = battery {
             b.name = n
@@ -35,6 +37,7 @@ final class BatteryEditViewModel: ObservableObject {
             b.capacityMah = cap
             b.cells = cellCount
             b.cycles = max(0, cycleCount)
+            b.cRating = cRatingValue
             b.status = status
             b.remark = trimmed(remark)
             b.updatedAt = Date()
@@ -43,8 +46,8 @@ final class BatteryEditViewModel: ObservableObject {
             let new = Battery(
                 name: n, code: trimmed(code),
                 capacityMah: cap, cells: cellCount,
-                cycles: max(0, cycleCount), status: status,
-                remark: trimmed(remark)
+                cycles: max(0, cycleCount), cRating: cRatingValue,
+                status: status, remark: trimmed(remark)
             )
             appState.addBattery(new)
         }
@@ -57,6 +60,7 @@ final class BatteryEditViewModel: ObservableObject {
         capacityMah = b.capacityMah.map { "\($0)" } ?? ""
         cells = b.cells.map { "\($0)" } ?? ""
         cycles = "\(b.cycles)"
+        cRating = b.cRating.map { "\($0)" } ?? ""
         status = b.status
         remark = b.remark ?? ""
     }
