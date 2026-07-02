@@ -1,0 +1,116 @@
+name: Release to TestFlight
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  upload:
+    name: Archive & Upload to TestFlight
+    runs-on: macos-15
+    timeout-minutes: 45
+
+    env:
+      ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+      ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Show Xcode version
+        run: xcodebuild -version
+
+      - name: Install App Store Connect API key
+        run: |
+          mkdir -p "$RUNNER_TEMP/asc"
+          printf '%s' "${{ secrets.ASC_KEY_P8 }}" > "$RUNNER_TEMP/asc/AuthKey.p8"
+
+      - name: Determine version and build number
+        id: version
+        run: |
+          # Build number: workflow run number — strictly increasing across all
+          # releases, which is all TestFlight requires.
+          echo "build=${{ github.run_number }}" >> "$GITHUB_OUTPUT"
+          # Marketing version: from the tag (v1.2 -> 1.2) when tag-triggered;
+          # otherwise keep whatever the project file says.
+          if [ "${GITHUB_REF_TYPE}" = "tag" ]; then
+            echo "marketing=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+          else
+            echo "marketing=" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Archive
+        run: |
+          set -o pipefail
+          EXTRA=()
+          if [ -n "${{ steps.version.outputs.marketing }}" ]; then
+            EXTRA+=("MARKETING_VERSION=${{ steps.version.outputs.marketing }}")
+          fi
+          xcodebuild archive \
+            -project FPVGarage.xcodeproj \
+            -scheme FPVGarage \
+            -configuration Release \
+            -destination 'generic/platform=iOS' \
+            -archivePath "$RUNNER_TEMP/FPVGarage.xcarchive" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$RUNNER_TEMP/asc/AuthKey.p8" \
+            -authenticationKeyID "$ASC_KEY_ID" \
+            -authenticationKeyIssuerID "$ASC_ISSUER_ID" \
+            CURRENT_PROJECT_VERSION=${{ steps.version.outputs.build }} \
+            "${EXTRA[@]}"
+
+      - name: Write export options
+        run: |
+          cat > "$RUNNER_TEMP/ExportOptions.plist" <<'PLIST'
+          <?xml version="1.0" encoding="UTF-8"?>
+          <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+          <plist version="1.0">
+          <dict>
+            <key>method</key>
+            <string>app-store-connect</string>
+            <key>destination</key>
+            <string>upload</string>
+            <key>signingStyle</key>
+            <string>automatic</string>
+            <key>teamID</key>
+            <string>U7XS79B47L</string>
+            <key>uploadSymbols</key>
+            <true/>
+          </dict>
+          </plist>
+          PLIST
+
+      - name: Export and upload to App Store Connect
+        run: |
+          set -o pipefail
+          xcodebuild -exportArchive \
+            -archivePath "$RUNNER_TEMP/FPVGarage.xcarchive" \
+            -exportOptionsPlist "$RUNNER_TEMP/ExportOptions.plist" \
+            -exportPath "$RUNNER_TEMP/export" \
+            -allowProvisioningUpdates \
+            -authenticationKeyPath "$RUNNER_TEMP/asc/AuthKey.p8" \
+            -authenticationKeyID "$ASC_KEY_ID" \
+            -authenticationKeyIssuerID "$ASC_ISSUER_ID"
+
+      - name: Clean up API key
+        if: always()
+        run: rm -rf "$RUNNER_TEMP/asc"
+
+      - name: Upload archive logs on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-diagnostics
+          path: |
+            ${{ runner.temp }}/export/*.log
+            ${{ runner.temp }}/export/DistributionSummary.plist
+          if-no-files-found: ignore
