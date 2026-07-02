@@ -6,12 +6,12 @@ final class ThrustToWeightCalculatorTests: XCTestCase {
     // MARK: - Missing data returns nil
 
     func testNilWhenNoThrust() {
-        let a = Aircraft(name: "Test", allUpWeightGrams: 500, flightStyle: .freestyle)
+        let a = Aircraft(name: "Test", flightStyle: .freestyle, allUpWeightGrams: 500)
         XCTAssertNil(ThrustToWeightCalculator.calculate(aircraft: a, linkedBattery: nil))
     }
 
     func testNilWhenNoAUW() {
-        let a = Aircraft(name: "Test", motorThrustGrams: 800, flightStyle: .freestyle)
+        let a = Aircraft(name: "Test", flightStyle: .freestyle, motorThrustGrams: 800)
         XCTAssertNil(ThrustToWeightCalculator.calculate(aircraft: a, linkedBattery: nil))
     }
 
@@ -21,7 +21,7 @@ final class ThrustToWeightCalculatorTests: XCTestCase {
     }
 
     func testNilWhenAUWIsZero() {
-        let a = Aircraft(name: "Test", motorThrustGrams: 800, allUpWeightGrams: 0, flightStyle: .freestyle)
+        let a = Aircraft(name: "Test", flightStyle: .freestyle, motorThrustGrams: 800, allUpWeightGrams: 0)
         XCTAssertNil(ThrustToWeightCalculator.calculate(aircraft: a, linkedBattery: nil))
     }
 
@@ -29,7 +29,7 @@ final class ThrustToWeightCalculatorTests: XCTestCase {
 
     func testRatioCalculation() {
         // 4 motors × 800 g = 3200 g total thrust; AUW = 500 g → ratio = 6.4
-        let a = Aircraft(name: "Test", motorThrustGrams: 800, allUpWeightGrams: 500, flightStyle: .freestyle)
+        let a = Aircraft(name: "Test", flightStyle: .freestyle, motorThrustGrams: 800, allUpWeightGrams: 500)
         let result = ThrustToWeightCalculator.calculate(aircraft: a, linkedBattery: nil)
         XCTAssertNotNil(result)
         XCTAssertEqual(result!.ratio, 6.4, accuracy: 0.01)
@@ -148,24 +148,24 @@ final class ThrustToWeightCalculatorTests: XCTestCase {
     // MARK: - Confidence / data source
 
     func testDefaultsToEstimatedWhenSourceNil() {
-        let a = Aircraft(name: "Test", motorThrustGrams: 800, allUpWeightGrams: 500, flightStyle: .freestyle)
+        let a = Aircraft(name: "Test", flightStyle: .freestyle, motorThrustGrams: 800, allUpWeightGrams: 500)
         XCTAssertEqual(result(a).confidence, .estimated)
     }
 
     func testMeasuredConfidence() {
-        let a = Aircraft(name: "Test", motorThrustGrams: 800, motorThrustDataSource: .measured, allUpWeightGrams: 500, flightStyle: .freestyle)
+        let a = Aircraft(name: "Test", flightStyle: .freestyle, motorThrustGrams: 800, motorThrustDataSource: .measured, allUpWeightGrams: 500)
         XCTAssertEqual(result(a).confidence, .measured)
     }
 
     func testSpecSheetConfidence() {
-        let a = Aircraft(name: "Test", motorThrustGrams: 800, motorThrustDataSource: .specSheet, allUpWeightGrams: 500, flightStyle: .freestyle)
+        let a = Aircraft(name: "Test", flightStyle: .freestyle, motorThrustGrams: 800, motorThrustDataSource: .specSheet, allUpWeightGrams: 500)
         XCTAssertEqual(result(a).confidence, .specSheet)
     }
 
     // MARK: - Helpers
 
     private func makeAircraft(thrustPerMotor: Int, auw: Int, style: FlightStyle) -> Aircraft {
-        Aircraft(name: "Test", motorThrustGrams: thrustPerMotor, allUpWeightGrams: auw, flightStyle: style)
+        Aircraft(name: "Test", flightStyle: style, motorThrustGrams: thrustPerMotor, allUpWeightGrams: auw)
     }
 
     private func result(_ aircraft: Aircraft) -> ThrustToWeightResult {
