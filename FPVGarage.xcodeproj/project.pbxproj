@@ -52,6 +52,16 @@
 		F00100000000000000000040 /* FPVGarageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000041 /* FPVGarageUITests.swift */; };
 		F00100000000000000000060 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000060 /* Localizable.xcstrings */; };
 		F00100000000000000000070 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F00200000000000000000070 /* SettingsView.swift */; };
+		F001000000000000000000A0 /* FPVEnums.swift in Sources */ = {isa = PBXBuildFile; fileRef = F002000000000000000000A0 /* FPVEnums.swift */; };
+		F001000000000000000000A1 /* AdviceTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F002000000000000000000A1 /* AdviceTypes.swift */; };
+		F001000000000000000000A2 /* ThrustToWeightCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F002000000000000000000A2 /* ThrustToWeightCalculator.swift */; };
+		F001000000000000000000A3 /* CompatibilityChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = F002000000000000000000A3 /* CompatibilityChecker.swift */; };
+		F001000000000000000000A4 /* TWRGaugeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F002000000000000000000A4 /* TWRGaugeView.swift */; };
+		F001000000000000000000A5 /* CompatibilityWarningsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F002000000000000000000A5 /* CompatibilityWarningsView.swift */; };
+		F001000000000000000000A6 /* AircraftBatteryResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = F002000000000000000000A6 /* AircraftBatteryResolver.swift */; };
+		F001000000000000000000B0 /* ThrustToWeightCalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F002000000000000000000B0 /* ThrustToWeightCalculatorTests.swift */; };
+		F001000000000000000000B1 /* CompatibilityCheckerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F002000000000000000000B1 /* CompatibilityCheckerTests.swift */; };
+		F001000000000000000000B2 /* AircraftBatteryResolverTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F002000000000000000000B2 /* AircraftBatteryResolverTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +131,16 @@
 		F00200000000000000000041 /* FPVGarageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPVGarageUITests.swift; sourceTree = "<group>"; };
 		F00200000000000000000060 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		F00200000000000000000070 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		F002000000000000000000A0 /* FPVEnums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FPVEnums.swift; sourceTree = "<group>"; };
+		F002000000000000000000A1 /* AdviceTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceTypes.swift; sourceTree = "<group>"; };
+		F002000000000000000000A2 /* ThrustToWeightCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrustToWeightCalculator.swift; sourceTree = "<group>"; };
+		F002000000000000000000A3 /* CompatibilityChecker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityChecker.swift; sourceTree = "<group>"; };
+		F002000000000000000000A4 /* TWRGaugeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TWRGaugeView.swift; sourceTree = "<group>"; };
+		F002000000000000000000A5 /* CompatibilityWarningsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityWarningsView.swift; sourceTree = "<group>"; };
+		F002000000000000000000A6 /* AircraftBatteryResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AircraftBatteryResolver.swift; sourceTree = "<group>"; };
+		F002000000000000000000B0 /* ThrustToWeightCalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThrustToWeightCalculatorTests.swift; sourceTree = "<group>"; };
+		F002000000000000000000B1 /* CompatibilityCheckerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompatibilityCheckerTests.swift; sourceTree = "<group>"; };
+		F002000000000000000000B2 /* AircraftBatteryResolverTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AircraftBatteryResolverTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -214,8 +234,18 @@
 				F00200000000000000000015 /* PartEditView.swift */,
 				F00200000000000000000016 /* PartDetailView.swift */,
 				F00200000000000000000070 /* SettingsView.swift */,
+				F004000000000000000000A0 /* Advice */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F004000000000000000000A0 /* Advice */ = {
+			isa = PBXGroup;
+			children = (
+				F002000000000000000000A4 /* TWRGaugeView.swift */,
+				F002000000000000000000A5 /* CompatibilityWarningsView.swift */,
+			);
+			path = Advice;
 			sourceTree = "<group>";
 		};
 		F00400000000000000000006 /* Storage */ = {
@@ -233,6 +263,11 @@
 			isa = PBXGroup;
 			children = (
 				F00200000000000000000018 /* RepositoryProtocols.swift */,
+				F002000000000000000000A0 /* FPVEnums.swift */,
+				F002000000000000000000A1 /* AdviceTypes.swift */,
+				F002000000000000000000A2 /* ThrustToWeightCalculator.swift */,
+				F002000000000000000000A3 /* CompatibilityChecker.swift */,
+				F002000000000000000000A6 /* AircraftBatteryResolver.swift */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -263,6 +298,9 @@
 				F00200000000000000000039 /* FileStorageServiceTests.swift */,
 				F0020000000000000000003A /* RepositoryTests.swift */,
 				F0020000000000000000003B /* AllDataDocumentTests.swift */,
+				F002000000000000000000B0 /* ThrustToWeightCalculatorTests.swift */,
+				F002000000000000000000B1 /* CompatibilityCheckerTests.swift */,
+				F002000000000000000000B2 /* AircraftBatteryResolverTests.swift */,
 			);
 			path = FPVGarageTests;
 			sourceTree = "<group>";
@@ -445,6 +483,13 @@
 				F00100000000000000000014 /* PartEditView.swift in Sources */,
 				F00100000000000000000015 /* PartDetailView.swift in Sources */,
 				F00100000000000000000070 /* SettingsView.swift in Sources */,
+				F001000000000000000000A0 /* FPVEnums.swift in Sources */,
+				F001000000000000000000A1 /* AdviceTypes.swift in Sources */,
+				F001000000000000000000A2 /* ThrustToWeightCalculator.swift in Sources */,
+				F001000000000000000000A3 /* CompatibilityChecker.swift in Sources */,
+				F001000000000000000000A4 /* TWRGaugeView.swift in Sources */,
+				F001000000000000000000A5 /* CompatibilityWarningsView.swift in Sources */,
+				F001000000000000000000A6 /* AircraftBatteryResolver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +508,9 @@
 				F00100000000000000000038 /* FileStorageServiceTests.swift in Sources */,
 				F00100000000000000000039 /* RepositoryTests.swift in Sources */,
 				F0010000000000000000003A /* AllDataDocumentTests.swift in Sources */,
+				F001000000000000000000B0 /* ThrustToWeightCalculatorTests.swift in Sources */,
+				F001000000000000000000B1 /* CompatibilityCheckerTests.swift in Sources */,
+				F001000000000000000000B2 /* AircraftBatteryResolverTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -610,6 +658,7 @@
 				DEVELOPMENT_TEAM = U7XS79B47L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "用于为飞机添加照片";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "用于记录飞行地点位置";
@@ -644,6 +693,7 @@
 				DEVELOPMENT_TEAM = U7XS79B47L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "用于为飞机添加照片";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "用于记录飞行地点位置";

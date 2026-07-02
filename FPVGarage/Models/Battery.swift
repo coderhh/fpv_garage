@@ -7,18 +7,20 @@ struct Battery: Identifiable, Codable, Equatable, Hashable {
     var capacityMah: Int?
     var cells: Int?
     var cycles: Int
+    var cRating: Int?
     var status: BatteryStatus
     var remark: String?
     var createdAt: Date
     var updatedAt: Date
 
-    init(id: UUID = UUID(), name: String, code: String? = nil, capacityMah: Int? = nil, cells: Int? = nil, cycles: Int = 0, status: BatteryStatus = .active, remark: String? = nil, createdAt: Date = Date(), updatedAt: Date = Date()) {
+    init(id: UUID = UUID(), name: String, code: String? = nil, capacityMah: Int? = nil, cells: Int? = nil, cycles: Int = 0, cRating: Int? = nil, status: BatteryStatus = .active, remark: String? = nil, createdAt: Date = Date(), updatedAt: Date = Date()) {
         self.id = id
         self.name = name
         self.code = code
         self.capacityMah = capacityMah
         self.cells = cells
         self.cycles = cycles
+        self.cRating = cRating
         self.status = status
         self.remark = remark
         self.createdAt = createdAt

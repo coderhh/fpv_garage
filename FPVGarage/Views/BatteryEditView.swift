@@ -20,6 +20,8 @@ struct BatteryEditView: View {
                         .keyboardType(.numberPad)
                     TextField("Cell Count (S)", text: $viewModel.cells)
                         .keyboardType(.numberPad)
+                    TextField("C-Rating (e.g. 50)", text: $viewModel.cRating)
+                        .keyboardType(.numberPad)
                     TextField("Cycle Count", text: $viewModel.cycles)
                         .keyboardType(.numberPad)
                 }

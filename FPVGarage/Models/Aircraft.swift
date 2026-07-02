@@ -31,6 +31,20 @@ struct Aircraft: Identifiable, Codable, Equatable, Hashable {
     var createdAt: Date
     var updatedAt: Date
 
+    // Performance & config fields (all optional, backward-compatible)
+    var flightStyle: FlightStyle?
+    var pilotSkillLevel: PilotSkillLevel?
+    var frameSizeInch: Double?
+    var motorModel: String?
+    var motorKv: Int?
+    var motorThrustGrams: Int?
+    var motorThrustDataSource: ThrustDataSource?
+    var propSize: String?
+    var batteryCellCount: Int?
+    var allUpWeightGrams: Int?
+    var escCurrentRating: Int?
+    var motorMaxCurrentAmps: Int?
+
     init(
         id: UUID = UUID(),
         name: String,
@@ -39,7 +53,19 @@ struct Aircraft: Identifiable, Codable, Equatable, Hashable {
         setup: AircraftSetup? = nil,
         remark: String? = nil,
         createdAt: Date = Date(),
-        updatedAt: Date = Date()
+        updatedAt: Date = Date(),
+        flightStyle: FlightStyle? = nil,
+        pilotSkillLevel: PilotSkillLevel? = nil,
+        frameSizeInch: Double? = nil,
+        motorModel: String? = nil,
+        motorKv: Int? = nil,
+        motorThrustGrams: Int? = nil,
+        motorThrustDataSource: ThrustDataSource? = nil,
+        propSize: String? = nil,
+        batteryCellCount: Int? = nil,
+        allUpWeightGrams: Int? = nil,
+        escCurrentRating: Int? = nil,
+        motorMaxCurrentAmps: Int? = nil
     ) {
         self.id = id
         self.name = name
@@ -49,6 +75,18 @@ struct Aircraft: Identifiable, Codable, Equatable, Hashable {
         self.remark = remark
         self.createdAt = createdAt
         self.updatedAt = updatedAt
+        self.flightStyle = flightStyle
+        self.pilotSkillLevel = pilotSkillLevel
+        self.frameSizeInch = frameSizeInch
+        self.motorModel = motorModel
+        self.motorKv = motorKv
+        self.motorThrustGrams = motorThrustGrams
+        self.motorThrustDataSource = motorThrustDataSource
+        self.propSize = propSize
+        self.batteryCellCount = batteryCellCount
+        self.allUpWeightGrams = allUpWeightGrams
+        self.escCurrentRating = escCurrentRating
+        self.motorMaxCurrentAmps = motorMaxCurrentAmps
     }
 
     var setupOrEmpty: AircraftSetup { setup ?? .empty }

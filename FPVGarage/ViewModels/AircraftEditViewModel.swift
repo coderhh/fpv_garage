@@ -18,6 +18,20 @@ final class AircraftEditViewModel: ObservableObject {
     @Published var propeller = ""
     @Published var otherSetup = ""
 
+    // Performance & config fields
+    @Published var flightStyle: FlightStyle? = nil
+    @Published var pilotSkillLevel: PilotSkillLevel? = nil
+    @Published var frameSizeInch = ""
+    @Published var motorModel = ""
+    @Published var motorKv = ""
+    @Published var motorThrustGrams = ""
+    @Published var motorThrustDataSource: ThrustDataSource? = nil
+    @Published var propSize = ""
+    @Published var batteryCellCount = ""
+    @Published var allUpWeightGrams = ""
+    @Published var escCurrentRating = ""
+    @Published var motorMaxCurrentAmps = ""
+
     var isNew: Bool { aircraft == nil }
     var canSave: Bool { !name.trimmingCharacters(in: .whitespaces).isEmpty }
 
@@ -57,18 +71,35 @@ final class AircraftEditViewModel: ObservableObject {
             a.setup = setup.isEmpty ? nil : setup
             a.remark = trim(remark)
             a.updatedAt = Date()
+            applyPerformanceFields(to: &a)
             appState.updateAircraft(a)
             appState.syncParts(for: a)
         } else {
-            let new = Aircraft(
+            var new = Aircraft(
                 id: aircraftId, name: n, model: trim(model),
                 imageFileName: imageFileName,
                 setup: setup.isEmpty ? nil : setup,
                 remark: trim(remark)
             )
+            applyPerformanceFields(to: &new)
             appState.addAircraft(new)
             appState.syncParts(for: new)
         }
+    }
+
+    private func applyPerformanceFields(to a: inout Aircraft) {
+        a.flightStyle = flightStyle
+        a.pilotSkillLevel = pilotSkillLevel
+        a.frameSizeInch = Double(frameSizeInch)
+        a.motorModel = trim(motorModel)
+        a.motorKv = Int(motorKv)
+        a.motorThrustGrams = Int(motorThrustGrams)
+        a.motorThrustDataSource = motorThrustDataSource
+        a.propSize = trim(propSize)
+        a.batteryCellCount = Int(batteryCellCount)
+        a.allUpWeightGrams = Int(allUpWeightGrams)
+        a.escCurrentRating = Int(escCurrentRating)
+        a.motorMaxCurrentAmps = Int(motorMaxCurrentAmps)
     }
 
     private func loadFromAircraft() {
@@ -86,6 +117,19 @@ final class AircraftEditViewModel: ObservableObject {
         receiver = s.receiver ?? ""
         propeller = s.propeller ?? ""
         otherSetup = s.other ?? ""
+
+        flightStyle = a.flightStyle
+        pilotSkillLevel = a.pilotSkillLevel
+        frameSizeInch = a.frameSizeInch.map { String($0) } ?? ""
+        motorModel = a.motorModel ?? ""
+        motorKv = a.motorKv.map { String($0) } ?? ""
+        motorThrustGrams = a.motorThrustGrams.map { String($0) } ?? ""
+        motorThrustDataSource = a.motorThrustDataSource
+        propSize = a.propSize ?? ""
+        batteryCellCount = a.batteryCellCount.map { String($0) } ?? ""
+        allUpWeightGrams = a.allUpWeightGrams.map { String($0) } ?? ""
+        escCurrentRating = a.escCurrentRating.map { String($0) } ?? ""
+        motorMaxCurrentAmps = a.motorMaxCurrentAmps.map { String($0) } ?? ""
     }
 
     private func trim(_ s: String) -> String? {
