@@ -658,6 +658,7 @@
 				DEVELOPMENT_TEAM = U7XS79B47L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "用于为飞机添加照片";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "用于记录飞行地点位置";
@@ -692,6 +693,7 @@
 				DEVELOPMENT_TEAM = U7XS79B47L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_ITSAppUsesNonExemptEncryption = NO;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSCameraUsageDescription = "用于为飞机添加照片";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "用于记录飞行地点位置";
