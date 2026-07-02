@@ -81,7 +81,21 @@ open FPVGarage.xcodeproj
 - [ ] `CURRENT_PROJECT_VERSION`: must increase for **every** upload, even
       re-uploads of the same marketing version.
 
-### B3. Archive & upload [Mac] (~20 min)
+### B3. Archive & upload — automated via GitHub Actions (preferred)
+
+One-time prerequisite: repo secrets `ASC_KEY_ID`, `ASC_ISSUER_ID`,
+`ASC_KEY_P8` (App Store Connect API key, **App Manager** role) —
+Settings → Secrets and variables → Actions.
+
+- [ ] Merge `develop` → `main` with CI green.
+- [ ] `git tag v1.1 && git push origin v1.1`
+- [ ] The **Release to TestFlight** workflow archives, cloud-signs with the
+      API key, and uploads automatically. Marketing version comes from the
+      tag (`v1.1` → `1.1`); build number is the workflow run number, so B2's
+      manual bump is unnecessary on this path.
+- [ ] When the build shows up in TestFlight, continue at B4.
+
+### B3-alt. Archive & upload manually [Mac] (~20 min)
 - [ ] Xcode: Product → Destination → **Any iOS Device (arm64)**.
 - [ ] Product → **Archive**.
 - [ ] Organizer → Distribute App → **App Store Connect** → Upload
